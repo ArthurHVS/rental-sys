@@ -15,7 +15,7 @@
                 </a>
             </div>
             <a href="#" class="margin-bottom flexh-justify-center w-inline-block w-lightbox">
-                <img src="../images/bghead.jpg" class="bgHero" sizes="(max-width: 479px) 90vw, (max-width: 767px) 94vw, 95vw" alt="">
+                <img src="../images/bghead.jpg" sizes="(max-width: 479px) 90vw, (max-width: 767px) 94vw, 95vw" alt="">
             </a>
             <div class="text-small text-align-center low-text-contrast">Para celebrar o lançamento da plataforma, use o
                 código <strong>webautosjp</strong> e ganhe 10% de desconto em qualquer aluguel até dia 28/02</div>
@@ -125,24 +125,43 @@
     </div>
 </div>
 <div class="section is-dark">
-    <div class="container container-fluid">
-        <div class="row row-fluid">
+    <div class="container">
+        <div class="row row-fluid justify-content-center">
             {{#each pool}}
-            <div class="col col-lg-4 col-sm-10">
-                <div class="card text-white bg-dark mb-3">
+            <div class="col col-lg-4 col-sm-10 justify-content-center">
+                <div class="card text-light bg-secondary align-items-center py-0">
+                    <div class="card-header w-100">{{#truncate this.brand this.model 28 }}{{/truncate}}</div>
                     <img class="card-img-top" src={{this.image}} alt="" />
-                    <div class="card-body">
-                        <h5 class="card-title">{{this.brand}} {{this.model}}</h5>
-                        <p class="card-text">{{#if
-                            this.aggregateRating.reviewCount}}{{this.aggregateRating.reviewCount}}{{else}}0{{/if}}
-                            reviews</p>
-                        <p class="card-text">Avaliação Média: {{#if
-                            this.aggregateRating.ratingValue}}{{this.aggregateRating.ratingValue}}{{else}} - {{/if}}</p>
-                    </div>
-                    <div class="container container-fluid">
-                        <a href="/car/{{this.slug}}" class="col col-5 btn btn-secondary float-right">Detalhes</a>
-                        <a href='#' class="col col-5 btn btn-success float-left">Alugue <i class="fa fa-whatsapp"
+
+                    <div class="card-body py-0 w-100 text-center">
+                        <div class="container container-fluid">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th class="px-0" scope="col"><i class="fas fa-users"></i>Reviews</th>
+                                        <th scope="col"><i class="fas fa-star"></i>Média</th>
+                                    </tr>
+                                    <tr>
+                                        <td>{{#if
+                                            this.aggregateRating.reviewCount}}{{this.aggregateRating.reviewCount}}{{else}}0{{/if}}</td>
+                                        <td>{{#if
+                                            this.aggregateRating.ratingValue}}{{this.aggregateRating.ratingValue}}{{else}}
+                                            -
+                                            {{/if}}
+                                        </td>
+                                    </tr>
+                                </thead>
+                            </table>
+
+
+                        </div>
+                        <a href="/car/{{this.slug}}" class="col col-12 btn btn-lg btn-dark">Detalhes</a>
+                        <a href='#' class="col col-12 btn btn-lg btn-success">Alugue <i class="fa fa-whatsapp"
                                 aria-hidden="true"></i></a>
+
+                    </div>
+                    <div class="w-100 card-footer text-white py-0">
+                        Disponível
                     </div>
                 </div>
             </div>

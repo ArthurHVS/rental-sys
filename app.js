@@ -5,8 +5,7 @@ const MongoClient = require('mongodb').MongoClient;
 const bcrypt = require('bcryptjs');
 const hbs = require('express-handlebars');
 const path = require('path');
-const detect = require('detect-browser');
-const browser = detect();
+
 var session = require('cookie-session');
 
 const app = express();
@@ -34,7 +33,7 @@ app.use(session({
 app.engine('hbs', hbs({ extname: 'hbs', helpers: require('./config/handlebars-helpers'), defaultLayout: 'layout', layoutsDir: __dirname + '/views/layouts' }));
 app.set('views', path.join(__dirname, 'views/'));
 app.set('view engine', 'hbs');
-app.use(express.static(path.join(__dirname, '/views')));
+app.use(express.static(path.join(__dirname, '/views/')));
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
@@ -50,11 +49,11 @@ app.use('/client', clientRoutes);
 app.use('/admin', adminRoutes);
 app.use('*/login', loginRoutes);
 
+app.get('*/home',(req,res)=>{
+    res.redirect('/client');
+});
 app.get('/', (req, res) => {
-    switch (browser && browser.name) {
-        case 'chrome':
-            res.redirect('/client');
-    }
+    res.redirect('/client');
 });
 app.get('/car/:slug/:id', (req, res) => {
     MongoClient.connect(process.env.MONGO_URL, { useNewUrlParser: true }, function (err, client) {
@@ -69,7 +68,7 @@ app.post('/attempt', (req, res) => {
         const db = client.db('autoloc');
 
         const usrCol = db.collection('users');
-        var logged = usrCol.findOne({ "email.address": req.body.email }, function (err, doc) {
+        var logged = usrCol.findOne({ "email.address":req.body.email }, function (err, doc) {
             if (err) {
                 throw err;
             }
@@ -79,7 +78,7 @@ app.post('/attempt', (req, res) => {
                         throw err;
                     }
                     if (result) {
-                        var logged = true;
+                        var logged=true;
                         res.redirect('/client/' + doc._id);
                         return true;
                     }

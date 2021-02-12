@@ -4,7 +4,7 @@ const MongoClient = require('mongodb').MongoClient;
 const ObjectID = require('mongodb').ObjectID;
 const path = require('path');
 const router = express.Router();
-var carros = [];
+
 
 router.get('*/home', (req, res) => {
     console.log("Qual é?");
@@ -12,6 +12,7 @@ router.get('*/home', (req, res) => {
 });
 
 router.get('/my-profile/:logged', (req, res) => {
+    
     MongoClient.connect(process.env.MONGO_URL, { useNewUrlParser: true }, function (err, client) {
         const db = client.db('autoloc');
         const usrCol = db.collection('users');
@@ -31,7 +32,7 @@ router.get('/my-profile/:logged', (req, res) => {
 
 router.get('/:logged/', (req, res) => {
     var sess = req.session;
-
+    var carros = [];
     MongoClient.connect(process.env.MONGO_URL, { useNewUrlParser: true }, function (err, client) {
         const db = client.db('autoloc');
         const carCollection = db.collection('car-pool');
@@ -59,7 +60,7 @@ router.get('/:logged/', (req, res) => {
 });
 router.get('/', (req, res) => {
     var sess = req.session;
-
+    var carros = [];
     MongoClient.connect(process.env.MONGO_URL, { useNewUrlParser: true }, function (err, client) {
         const db = client.db('autoloc');
         const carCollection = db.collection('car-pool');
