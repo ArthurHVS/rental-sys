@@ -5,8 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "MONGO_URL='mongodb://localhost:27017/' node server.js",
-    "prod": "MONGO_URL='mongodb://mongo_autoloc:27017/', node server.js",
+    "dev": "MONGO_URL='mongodb://localhost:27017/', node server.js",
+    "prod": "MONGO_URL='mongodb://localhost:27017/', node server.js",
     "start": "npm run prod"
   },
   "author": "",

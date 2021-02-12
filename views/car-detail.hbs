@@ -1,16 +1,25 @@
 {{> navbar}}
-<div class="section is-header">
+<div class="container text-center">
     <div class="container">
         <div class="col lg-5 flexv-justify-center md-12">
-            <div class="breadcrumb margin-bottom-double">
-                <a href="/home">Home</a>
-                <span class="fa margin-left-small margin-right-small is-xsmall"></span>Detalhes
-            </div>
-            <div>
-                <h1>{{carro.brand}} {{carro.model}}</h1>
+            <div class="container container-fluid">
+                <nav aria-label="breadcrumb py-2">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="/home">Home</a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page">
+                            <a href="#">Detalhes</a>
+                        </li>
+                    </ol>
+                </nav>
             </div>
         </div>
+        <div>
+            <h1>{{carro.brand}} {{carro.model}}</h1>
+        </div>
     </div>
+</div>
 </div>
 <div class="section is-dark">
     <div class="col col-10 container container-fluid">

@@ -130,7 +130,7 @@
             {{#each pool}}
             <div class="col col-lg-4 col-sm-10 justify-content-center">
                 <div class="card text-light bg-secondary align-items-center py-0">
-                    <div class="card-header w-100">{{#truncate this.brand this.model 28 }}{{/truncate}}</div>
+                    <div class="card-header w-100">{{this.brand}} {{this.model}}</div>
                     <img class="card-img-top" src={{this.image}} alt="" />
 
                     <div class="card-body py-0 w-100 text-center">
