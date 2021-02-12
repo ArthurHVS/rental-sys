@@ -52,6 +52,11 @@ app.use('*/login', loginRoutes);
 app.get('*/home',(req,res)=>{
     res.redirect('/client');
 });
+
+app.post('/whats',(req,res)=>{
+    console.log(req.body);
+    res.send("OkieDokie",200);
+})
 app.get('/', (req, res) => {
     res.redirect('/client');
 });

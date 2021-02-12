@@ -5,7 +5,6 @@ const ObjectID = require('mongodb').ObjectID;
 const path = require('path');
 const router = express.Router();
 
-
 router.get('*/home', (req, res) => {
     console.log("Qual é?");
     res.redirect('/');
