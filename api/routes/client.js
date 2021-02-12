@@ -12,7 +12,7 @@ router.get('*/home', (req, res) => {
 });
 
 router.get('/my-profile/:logged', (req, res) => {
-    
+
     MongoClient.connect(process.env.MONGO_URL, { useNewUrlParser: true }, function (err, client) {
         const db = client.db('autoloc');
         const usrCol = db.collection('users');
@@ -42,7 +42,7 @@ router.get('/:logged/', (req, res) => {
         }, function () {
             MongoClient.connect(process.env.MONGO_URL, { useNewUrlParser: true }, function (err, client) {
                 const db = client.db('autoloc');
-                if (ObjectID.isValid(req.params.logged)){
+                if (ObjectID.isValid(req.params.logged)) {
                     const usrCol = db.collection('users').findOne({ _id: ObjectID(req.params.logged) }, function (err, doc) {
                         if (err) {
                             throw err;
