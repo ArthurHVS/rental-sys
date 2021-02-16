@@ -1,6 +1,6 @@
 {{> navbar navUsr=user}}
-<div class="bg-dark">
-    <div class="row row-fluid section is-dark">
+<div class="pattern-back">
+    <div class="row row-fluid section">
         <h1 class="text-align-center text-light">Alugue os melhores
             carros, pelo melhor preço!</h1>
         <div class="flexh-justify-center xs-is-wrapping">
@@ -19,7 +19,7 @@
     <div class="container flex-horizontal">
         <div class="col lg-4 flexv-space-between md-12 text-light">
             <div>
-                <div class="pre-title on-light">Quem nós somos?</div>
+                <div class="pre-title on-dark">Quem nós somos?</div>
                 <div class="size-h2 size-h2-xs md-margin-bottom">Somos uma empresa do grupo UMK, focada em possibilitar
                     o aluguel de carros de luxo sem complicações</div>
             </div><a href="about.html" class="cta-link change-color"><span class="margin-right">Mais sobre
@@ -157,7 +157,7 @@
                         <a href="/car/{{this.slug}}" class="col col-12 btn btn-lg btn-dark">Detalhes</a>
 
                         <a class="col col-12 btn btn-lg btn-success"
-                            onclick="popup('{{this.model}}','{{this.brand}}')">Alugue <i class="fa fa-whatsapp"
+                            onclick="popup('{{this.model}}','{{this.brand}}','{{this.slug}}')">Alugue <i class="fa fa-whatsapp"
                                 aria-hidden="true"></i></a>
 
                     </div>

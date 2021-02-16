@@ -1,25 +1,40 @@
-<div class="container">
-    <div class="">
-        <div class="login-main-text">
-            <h2>WebAutosJP Rental<br> Login Page</h2>
-            <p>Faça Login para acessar sua conta</p>
+<div class="container m-auto">
+    <div class="container">
+        <div class="">
+            <div class="login-main-text">
+                <h2>WebAutosJP Rental<br> Acesse a Área Restrita</h2>
+                <p>Faça Login para acessar sua conta</p>
+            </div>
         </div>
-    </div>
-    <div class="">
-        <div class="col-md-6 col-sm-12">
-            <div class="login-form">
-                <form action="/attempt" method="POST">
-                    <div class="form-group">
-                        <label>User Name</label>
-                        <input type="text" class="form-control" placeholder="Email" name="email">
-                    </div>
-                    <div class="form-group">
-                        <label>Senha</label>
-                        <input type="password" class="form-control" placeholder="Senha" name="password">
-                    </div>
-                    <button type="submit" class="btn btn-primary">Login</button>
-                    <button class="btn btn-secondary">Registrar</button>
-                </form>
+        <div class="">
+            <div class="col-md-6 col-sm-12">
+                <div class="login-form">
+                    {{!-- <form action="/attempt" method="POST">
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Email</label>
+                            <input type="email" class="form-control" name="email"
+                                aria-describedby="emailHelp">
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">Senha</label>
+                            <input type="password" class="form-control" name="password">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Login</button>
+                    </form> --}}
+                     <form action="/attempt" method="POST">
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="text" class="form-control" placeholder="Email" name="email">
+                        </div>
+                        <div class="form-group">
+                            <label>Senha</label>
+                            <input type="password" class="form-control" placeholder="Senha" name="password">
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary">Login</button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>

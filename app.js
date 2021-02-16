@@ -46,16 +46,19 @@ app.use((req, res, next) => {
 
 // Uses para mascarar as urls
 app.use('/client', clientRoutes);
-app.use('/admin', adminRoutes);
+app.use('*/admin', adminRoutes);
 app.use('*/login', loginRoutes);
 
-app.get('*/home',(req,res)=>{
+app.get('*/home', (req, res) => {
     res.redirect('/client');
 });
 
-app.post('/whats',(req,res)=>{
-    console.log(req.body);
-    res.send("OkieDokie",200);
+app.post('/handshake', (req, res) => {
+    MongoClient.connect(process.env.MONGO_URL, { useNewUrlParser: true }, function (err, client) {
+        const db = client.db('admin');
+        const rel = db.collection('fila-zero').insertOne(req.body.value);
+        res.sendStatus(200);
+    })
 })
 app.get('/', (req, res) => {
     res.redirect('/client');
@@ -64,16 +67,17 @@ app.get('/car/:slug/:id', (req, res) => {
     MongoClient.connect(process.env.MONGO_URL, { useNewUrlParser: true }, function (err, client) {
         const db = client.db('autoloc');
         const rel = db.collection('car-pool').findOne({ id_num: req.params.id }, function (err, doc) {
-            res.render('car-detail', { carro: doc })
+            res.render('car-detail', { carro: doc, layout: 'detail-layout' })
         });
     });
 });
+
 app.post('/attempt', (req, res) => {
     MongoClient.connect(process.env.MONGO_URL, { useNewUrlParser: true }, function (err, client) {
-        const db = client.db('autoloc');
+        const db = client.db('admin');
 
-        const usrCol = db.collection('users');
-        var logged = usrCol.findOne({ "email.address":req.body.email }, function (err, doc) {
+        const usrCol = db.collection('adm-users');
+        var logged = usrCol.findOne({ "email.address": req.body.email }, function (err, doc) {
             if (err) {
                 throw err;
             }
@@ -83,12 +87,13 @@ app.post('/attempt', (req, res) => {
                         throw err;
                     }
                     if (result) {
-                        var logged=true;
-                        res.redirect('/client/' + doc._id);
+                        var logged = true;
+                        res.redirect('/admin/' + doc._id);
                         return true;
                     }
                     else {
                         console.log('Sem chance irmão...');
+                        res.redirect('/');
                         return false;
                     }
                 });
