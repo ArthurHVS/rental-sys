@@ -1,138 +1,11 @@
 <div id="wrapper" style="height: fit-content !important;">
 
-    <!-- Topbar Start -->
-    <div class="navbar-custom">
-        <ul class="list-unstyled topnav-menu float-right mb-0">
+    {{> navbar_admin}}
 
-            <li class="d-none d-sm-block">
-                <form class="app-search">
-                    <div class="app-search-box">
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Busque">
-                            <div class="input-group-append">
-                                <button class="btn" type="submit">
-                                    <i class="fe-search"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </li>
-        </ul>
-
-        <!-- LOGO -->
-        <div class="logo-box">
-            <a href="index.html" class="logo logo-dark text-center">
-                <span class="logo-lg">
-                    <img src="assets/images/logo-dark.png" alt="" height="16">
-                </span>
-                <span class="logo-sm">
-                    <img src="assets/images/logo-sm.png" alt="" height="24">
-                </span>
-            </a>
-            <a href="index.html" class="logo logo-light text-center">
-                <span class="logo-lg">
-                    <img src="assets/images/logo-light.png" alt="" height="16">
-                </span>
-                <span class="logo-sm">
-                    <img src="assets/images/logo-sm.png" alt="" height="24">
-                </span>
-            </a>
-        </div>
-
-        <ul class="list-unstyled topnav-menu topnav-menu-left mb-0">
-            <li>
-                <button class="button-menu-mobile disable-btn waves-effect">
-                    <i class="fe-menu"></i>
-                </button>
-            </li>
-
-            <li>
-                <h4 class="page-title-main">Dashboard</h4>
-            </li>
-
-        </ul>
-
-    </div>
-    <!-- end Topbar -->
-
-    <!-- ========== Left Sidebar Start ========== -->
-    <div class="left-side-menu">
-
-        <div class="slimscroll-menu">
-
-            <!-- User box -->
-            <div class="user-box text-center">
-                <img src="{{context.picSrc}}" alt="admin-img" title="Mat Helme"
-                    class="rounded-circle img-thumbnail avatar-md">
-                <div class="dropdown">
-                    <a href="#" class="user-name dropdown-toggle h5 mt-2 mb-1 d-block" data-toggle="dropdown"
-                        aria-expanded="false">{{context.user.name}}</a>
-                </div>
-                <p class="text-muted">{{this.pos}}</p>
-                <ul class="list-inline">
-                    <li class="list-inline-item">
-                        <a href="#" class="text-muted">
-                            <i class="mdi mdi-cog"></i>
-                        </a>
-                    </li>
-
-                    <li class="list-inline-item">
-                        <a href="#">
-                            <i class="mdi mdi-power"></i>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-
-            <!--- Sidemenu -->
-            <div id="sidebar-menu">
-
-                <ul class="metismenu" id="side-menu">
-
-                    <li class="menu-title">Navigation</li>
-
-                    <li>
-                        <a href="/">
-                            <i class="mdi mdi-view-dashboard"></i>
-                            <span> Homepage </span>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="javascript: void(0);">
-                            <i class="mdi mdi-page-layout-sidebar-left"></i>
-                            <span> Equipe </span>
-                            <span class="menu-arrow"></span>
-                        </a>
-                        <ul class="nav-second-level" aria-expanded="false">
-                            <li><a href="layouts-horizontal.html">Adicionar Membro</a></li>
-                            <li><a href="layouts-sidebar-sm.html">Modificar Cadastro</a></li>
-                            <li><a href="layouts-dark-sidebar.html">Dark Sidebar</a></li>
-                        </ul>
-                    </li>
-
-                </ul>
-
-            </div>
-            <!-- End Sidebar -->
-
-            <div class="clearfix"></div>
-
-        </div>
-        <!-- Sidebar -left -->
-
-    </div>
-    <!-- Left Sidebar End -->
-
-    <!-- ============================================================== -->
-    <!-- Start Page Content here -->
-    <!-- ============================================================== -->
+    {{> admin_leftbar}}
 
     <div class="content-page">
         <div class="content">
-
-            <!-- Start Content-->
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-xl-3 col-md-6">
@@ -142,86 +15,70 @@
                             <div class="widget-chart-1">
                                 <div class="widget-chart-box-1 float-left" dir="ltr">
                                     <input data-plugin="knob" data-width="80" data-height="80" data-fgColor="#f05050 "
-                                        data-bgColor="#F9B9B9" value="58" data-skin="tron" data-angleOffset="180"
-                                        data-readOnly=true data-thickness=".15" />
+                                        data-bgColor="#F9B9B9" value="{{context.carCatalog.length}}" data-skin="tron"
+                                        data-angleOffset="180" data-readOnly=true data-thickness=".15" />
                                 </div>
 
                                 <div class="widget-detail-1 text-right">
-                                    <h2 class="font-weight-normal pt-2 mb-1"> 256 </h2>
+                                    <h2 class="font-weight-normal pt-2 mb-1">{{context.carCatalog.length}}</h2>
                                     <p class="text-muted mb-1">Carros</p>
                                 </div>
                             </div>
                         </div>
 
-                    </div><!-- end col -->
-
-                    <div class="col-xl-3 col-md-6">
-                        <div class="card-box">
-                            <h4 class="header-title mt-0 mb-3">Total Aluguéis</h4>
-
-                            <div class="widget-box-2">
-                                <div class="widget-detail-2 text-right">
-                                    <span class="badge badge-success badge-pill float-left mt-3">32% <i
-                                            class="mdi mdi-trending-up"></i> </span>
-                                    <h2 class="font-weight-normal mb-1"> 8451 </h2>
-                                    <p class="text-muted mb-3">Aluguéis realizados</p>
-                                </div>
-                                <div class="progress progress-bar-alt-success progress-sm">
-                                    <div class="progress-bar bg-success" role="progressbar" aria-valuenow="77"
-                                        aria-valuemin="0" aria-valuemax="100" style="width: 77%;">
-                                        <span class="sr-only">77% Complete</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div><!-- end col -->
-
+                    </div>
                     <div class="col-xl-3 col-md-6">
                         <div class="card-box">
                             <h4 class="header-title mt-0 mb-4">Reservas na fila</h4>
 
                             <div class="widget-chart-1">
                                 <div class="widget-chart-box-1 float-left" dir="ltr">
-                                    <input data-plugin="knob" data-width="80" data-height="80" data-fgColor="#ffbd4a"
-                                        data-bgColor="#FFE6BA" value="80" data-skin="tron" data-angleOffset="180"
-                                        data-readOnly=true data-thickness=".15" />
+                                    <input data-plugin="knob" data-width="80" data-height="80" data-fgColor="#f05050"
+                                        data-bgColor="#F9B9B9" value="{{context.filaZero.length}}" data-skin="tron"
+                                        data-angleOffset="180" data-readOnly=true data-thickness=".15" />
                                 </div>
                                 <div class="widget-detail-1 text-right">
-                                    <h2 class="font-weight-normal pt-2 mb-1"> 4569 </h2>
+                                    <h2 class="font-weight-normal pt-2 mb-1">{{context.filaZero.length}}</h2>
                                     <p class="text-muted mb-1">Reservas na fila</p>
                                 </div>
                             </div>
                         </div>
-
-                    </div><!-- end col -->
-
+                    </div>
                     <div class="col-xl-3 col-md-6">
                         <div class="card-box">
-                            <h4 class="header-title mt-0 mb-3">Reservas hoje</h4>
+                            <h4 class="header-title mt-0 mb-3">Reservas na Anyca</h4>
 
-                            <div class="widget-box-2">
-                                <div class="widget-detail-2 text-right">
-                                    <span class="badge badge-pink badge-pill float-left mt-3">32% <i
-                                            class="mdi mdi-trending-up"></i> </span>
-                                    <h2 class="font-weight-normal mb-1"> 158 </h2>
-                                    <p class="text-muted mb-3">Reservas</p>
+                            <div class="widget-chart-1">
+                                <div class="widget-chart-box-1 float-left" dir="ltr">
+                                    <input data-plugin="knob" data-width="80" data-height="80" data-fgColor="#ffbd4a"
+                                        data-bgColor="#FFE6BA" value="{{context.filaAnyca.length}}" data-skin="tron"
+                                        data-angleOffset="180" data-readOnly=true data-thickness=".15" />
                                 </div>
-                                <div class="progress progress-bar-alt-pink progress-sm">
-                                    <div class="progress-bar bg-pink" role="progressbar" aria-valuenow="77"
-                                        aria-valuemin="0" aria-valuemax="100" style="width: 77%;">
-                                        <span class="sr-only">77% Complete</span>
-                                    </div>
+                                <div class="widget-detail-1 text-right">
+                                    <h2 class="font-weight-normal pt-2 mb-1">{{context.filaAnyca.length}}</h2>
+                                    <p class="text-muted mb-1">Processadas</p>
                                 </div>
                             </div>
                         </div>
-
                     </div>
-                    <!-- end col -->
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card-box">
+                            <h4 class="header-title mt-0 mb-3">Reservas pagas</h4>
 
+                            <div class="widget-chart-1">
+                                <div class="widget-chart-box-1 float-left" dir="ltr">
+                                    <input data-plugin="knob" data-width="80" data-height="80" data-fgColor="#439c00"
+                                        data-bgColor="#b8e398" value="{{context.handshakes.length}}" data-skin="tron"
+                                        data-angleOffset="180" data-readOnly=true data-thickness=".15" />
+                                </div>
+                                <div class="widget-detail-1 text-right">
+                                    <h2 class="font-weight-normal pt-2 mb-1">{{context.handshakes.length}}</h2>
+                                    <p class="text-muted mb-1">Aluguéis pagos</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <!-- end row -->
-
                 <div class="row">
                     <div class="col-12">
                         <div class="card-box">
@@ -232,13 +89,7 @@
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right">
                                     <!-- item-->
-                                    <a href="javascript:void(0);" class="dropdown-item">Action</a>
-                                    <!-- item-->
-                                    <a href="javascript:void(0);" class="dropdown-item">Another action</a>
-                                    <!-- item-->
-                                    <a href="javascript:void(0);" class="dropdown-item">Something else</a>
-                                    <!-- item-->
-                                    <a href="javascript:void(0);" class="dropdown-item">Separated link</a>
+                                    <a href="/admin/{{context.myself.myObj}}/fila" class="dropdown-item">Abrir Fila</a>
                                 </div>
                             </div>
 
@@ -251,43 +102,35 @@
                                             <th>#</th>
                                             <th>Nome</th>
                                             <th>Carro</th>
-                                            <th>Data Início</th>
-                                            <th>Data Entrega</th>
-                                            <th>Tel. Contato</th>
-                                            <th>Status</th>
+                                            <th>Whatsapp Cliente</th>
                                             <th>Responsável</th>
+                                            <th>Criado dia</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {{#each context.fila}}
+                                        {{#each context.filaZero}}
                                         <tr>
-                                            <td>1</td>
-                                            <td>{{this.nome}}</td>
-                                            <td>{{this.carro}}</td>
-                                            <td>{{this.inicio}}</td>
-                                            <td>{{this.fim}}</td>
-                                            <td>{{this.telefone}}</td>
-                                            <td><span class="badge badge-danger">{{this.status}}</span></td>
-                                            <td>{{this.responsavel}}</td>
+                                            <td>{{@index}}</td>
+                                            <td>{{this.data.nome}}</td>
+                                            <td>{{this.data.carro}}</td>
+                                            <td>{{this.data.telefone}}</td>
+                                            <td>{{this.data.responsavel}}</td>
+                                            <td>{{purgatorio this.born}}</td>
                                         </tr>
                                         {{/each}}
                                     </tbody>
                                 </table>
                             </div>
                         </div>
-                    </div><!-- end col -->
-
+                    </div>
                 </div>
-                <!-- end row -->
-                <!-- Each equipe -->
                 <div class="row">
                     {{#each context.equipe}}
                     <div class="col-xl-3 col-md-6">
                         <div class="card-box widget-user">
                             <div class="media">
                                 <div class="avatar-lg mr-3">
-                                    <img src="assets/images/users/user-3.jpg" class="img-fluid rounded-circle"
-                                        alt="user">
+                                    <img src="{{this.image}}" class="img-fluid rounded-circle" alt="user">
                                 </div>
                                 <div class="media-body overflow-hidden">
                                     <h5 class="mt-0 mb-1">{{this.nome}}</h5>
@@ -298,98 +141,14 @@
                                 </div>
                             </div>
                         </div>
-                    </div><!-- end col -->
+                    </div>
                     {{/each}}
-
-                </div>
-                <!-- end row -->
-
-
-
-            </div> <!-- container-fluid -->
-
-        </div> <!-- content -->
-
-        <!-- Footer Start -->
-        <footer class="footer">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-6">
-                        2016 - 2020 &copy; Adminto theme by <a href="">Coderthemes</a>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="text-md-right footer-links d-none d-sm-block">
-                            <a href="javascript:void(0);">About Us</a>
-                            <a href="javascript:void(0);">Help</a>
-                            <a href="javascript:void(0);">Contact Us</a>
-                        </div>
-                    </div>
                 </div>
             </div>
-        </footer>
-        <!-- end Footer -->
-
-    </div>
-
-    <!-- ============================================================== -->
-    <!-- End Page content -->
-    <!-- ============================================================== -->
-
-
-</div>
-<!-- END wrapper -->
-
-<!-- Right Sidebar -->
-<div class="right-bar">
-    <div class="rightbar-title">
-        <a href="javascript:void(0);" class="right-bar-toggle float-right">
-            <i class="mdi mdi-close"></i>
-        </a>
-        <h4 class="font-16 m-0 text-white">Theme Customizer</h4>
-    </div>
-    <div class="slimscroll-menu">
-
-        <div class="p-3">
-            <div class="alert alert-warning" role="alert">
-                <strong>Customize </strong> the overall color scheme, layout, etc.
-            </div>
-            <div class="mb-2">
-                <img src="assets/images/layouts/light.png" class="img-fluid img-thumbnail" alt="">
-            </div>
-            <div class="custom-control custom-switch mb-3">
-                <input type="checkbox" class="custom-control-input theme-choice" id="light-mode-switch" checked />
-                <label class="custom-control-label" for="light-mode-switch">Light Mode</label>
-            </div>
-
-            <div class="mb-2">
-                <img src="assets/images/layouts/dark.png" class="img-fluid img-thumbnail" alt="">
-            </div>
-            <div class="custom-control custom-switch mb-3">
-                <input type="checkbox" class="custom-control-input theme-choice" id="dark-mode-switch"
-                    data-bsStyle="assets/css/bootstrap-dark.min.css" data-appStyle="assets/css/app-dark.min.css" />
-                <label class="custom-control-label" for="dark-mode-switch">Dark Mode</label>
-            </div>
-
-            <div class="mb-2">
-                <img src="assets/images/layouts/rtl.png" class="img-fluid img-thumbnail" alt="">
-            </div>
-            <div class="custom-control custom-switch mb-3">
-                <input type="checkbox" class="custom-control-input theme-choice" id="rtl-mode-switch"
-                    data-appStyle="assets/css/app-rtl.min.css" />
-                <label class="custom-control-label" for="rtl-mode-switch">RTL Mode</label>
-            </div>
-
-            <div class="mb-2">
-                <img src="assets/images/layouts/dark-rtl.png" class="img-fluid img-thumbnail" alt="">
-            </div>
-            <div class="custom-control custom-switch mb-5">
-                <input type="checkbox" class="custom-control-input theme-choice" id="dark-rtl-mode-switch"
-                    data-bsStyle="assets/css/bootstrap-dark.min.css" data-appStyle="assets/css/app-dark-rtl.min.css" />
-                <label class="custom-control-label" for="dark-rtl-mode-switch">Dark RTL Mode</label>
-            </div>
-
-            <a href="https://1.envato.market/k0YEM" class="btn btn-danger btn-block mt-3" target="_blank"><i
-                    class="mdi mdi-download mr-1"></i> Download Now</a>
         </div>
-    </div> <!-- end slimscroll-menu-->
+        {{> footer_admin}}
+
+    </div>
+
+
 </div>

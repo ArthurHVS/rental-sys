@@ -56,7 +56,7 @@ app.get('*/home', (req, res) => {
 app.post('/handshake', (req, res) => {
     MongoClient.connect(process.env.MONGO_URL, { useNewUrlParser: true }, function (err, client) {
         const db = client.db('admin');
-        const rel = db.collection('fila-zero').insertOne(req.body.value);
+        const rel = db.collection('fila-zero').insertOne({data: req.body.value, born: new Date(), responsavel: '', checked: false});
         res.sendStatus(200);
     })
 })

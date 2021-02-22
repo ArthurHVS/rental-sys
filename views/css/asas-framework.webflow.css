@@ -3866,19 +3866,19 @@ figcaption {
 }
 
 .slide-with-bg.bg1 {
-  background-image: linear-gradient(256deg, rgba(41, 13, 119, 0.459), rgba(148, 169, 240, 0.808)), url('../../images/slidehead.jpg');
+  background-image: linear-gradient(256deg, rgba(41, 13, 119, 0.459), rgba(148, 169, 240, 0.808)), url('../../images/slidehead.webp');
   background-position: 50% 50%;
   background-size: cover;
 }
 
 .slide-with-bg.bg2 {
-  background-image: linear-gradient(256deg, rgb(150 53 53 / 0%), rgba(148, 169, 240, 0.808)), url('../../images/slidehead2.jpg');
+  background-image: linear-gradient(256deg, rgb(150 53 53 / 0%), rgba(148, 169, 240, 0.808)), url('../../images/slidehead2.webp');
   background-position: 50% 50%;
   background-size: cover; 
 }
 
 .slide-with-bg.bg3 {
-  background-image: linear-gradient(to left, rgba(255, 255, 255, 0.459), rgba(0, 0, 0, 0.692)), url('../../images/slidehead3.jpg');
+  background-image: linear-gradient(to left, rgba(255, 255, 255, 0.459), rgba(0, 0, 0, 0.692)), url('../../images/slidehead3.webp');
   background-position: 50% 50%;
   background-size: cover;
 }

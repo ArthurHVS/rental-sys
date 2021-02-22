@@ -1,0 +1,112 @@
+<!-- Begin page -->
+<div id="wrapper" style="height: fit-content !important;">
+
+    <!-- Topbar Start -->
+    {{> navbar_admin}}
+    <!-- end Topbar -->
+
+    {{> admin_leftbar}}
+
+    <div class="content-page">
+        <div class="content">
+
+            <!-- Start Content-->
+            <div class="container-fluid">
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div id="filaCarousel" class="carousel slide" data-ride="carousel">
+                            <div class="carousel-inner">
+                                {{#each context.filaZero}}
+                                {{#if @index==0}}
+                                <div class="carousel-item active">
+                                {{else}}
+                                <div class="carousel-item">
+                                    <div class="timeline" dir="ltr">
+                                        <article class="timeline-item alt">
+                                            <div class="time-show first">
+                                                <a href="#" class="btn btn-primary width-lg">Today</a>
+                                            </div>
+                                        </article>
+                                        <article class="timeline-item alt">
+                                            <div class="timeline-desk">
+                                                <div class="panel">
+                                                    <div class="panel-body">
+                                                        <span class="arrow-alt"></span>
+                                                        <span class="timeline-icon bg-danger"><i
+                                                                class="mdi mdi-circle"></i></span>
+                                                        <h4 class="text-danger">Cliente</h4>
+                                                        <p class="timeline-date text-muted"><small>Até 1 dia após a
+                                                                pré-reserva</small></p>
+                                                        <p>O contato com <a href="#">{{this.data.nome}}</a> já foi
+                                                            realizado?</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </article>
+                                        <article class="timeline-item ">
+                                            <div class="timeline-desk">
+                                                <div class="panel">
+                                                    <div class="panel-body">
+                                                        <span class="arrow"></span>
+                                                        <span class="timeline-icon bg-success"><i
+                                                                class="mdi mdi-circle"></i></span>
+                                                        <h4 class="text-success">Proprietário</h4>
+                                                        <p class="timeline-date text-muted"><small>Até 4 dias antes da
+                                                                reserva</small></p>
+                                                        <p>Todas as informações sobre o <a
+                                                                href="https://anyca.net/car/{{this.data.slug}}">{{this.data.carro}}</a>
+                                                            estão disponíveis?</p>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </article>
+                                        <article class="timeline-item alt">
+                                            <div class="timeline-desk">
+                                                <div class="panel">
+                                                    <div class="panel-body">
+                                                        <span class="arrow-alt"></span>
+                                                        <span class="timeline-icon bg-primary"><i
+                                                                class="mdi mdi-circle"></i></span>
+                                                        <h4 class="text-primary">Pagamento</h4>
+                                                        <p class="timeline-date text-muted"><small>Um dia antes da
+                                                                entrega</small></p>
+                                                        <p>O pagamento foi devidamente efetuado?</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </article>
+                                        <article class="timeline-item">
+                                            <div class="timeline-desk">
+                                                <div class="panel">
+                                                    <div class="panel-body">
+                                                        <span class="arrow"></span>
+                                                        <span class="timeline-icon bg-purple"><i
+                                                                class="mdi mdi-circle"></i></span>
+                                                        <h4 class="text-purple">Devolução</h4>
+                                                        <p class="timeline-date text-muted"><small>1 dia após a
+                                                                devolução</small></p>
+                                                        <p>O aluguel foi finalizado sem problemas?</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </article>
+                                    </div>
+                                </div>
+                                {{/each}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end row -->
+
+            </div> <!-- container-fluid -->
+
+        </div> <!-- content -->
+
+        <!-- Footer Start -->
+        {{> footer_admin}}
+    </div>
+</div>
+<!-- END wrapper -->

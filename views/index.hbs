@@ -56,7 +56,7 @@
                             burocráticos com o proprietário.</div>
                         <div class="flexh-align-center wrap-xs">
                             <a href="spare-part-page.html"
-                                class="button-primary animated margin-bottom-small w-inline-block">
+                                class="button-primary margin-bottom-small w-inline-block">
                                 <div class="button-primary-text">Alugue Agora!</div>
                             </a>
                         </div>
@@ -71,7 +71,7 @@
                         <div class="margin-bottom-2">Texto 2 do Carrossel</div>
                         <div class="flexh-align-center wrap-xs">
                             <a data-w-id="0dafceca-31fa-ded5-c085-e93ec039c63c" href="spare-part-page.html"
-                                class="button-primary animated margin-bottom-small w-inline-block">
+                                class="button-primary margin-bottom-small w-inline-block">
                                 <div style="-webkit-transform:translate3d(0, 0PX, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 0PX, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 0PX, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 0PX, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:1"
                                     class="button-primary-text">Alugue Agora!</div>
                                 <div style="opacity:0;display:block;-webkit-transform:translate3d(0, 20PX, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 20PX, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 20PX, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 20PX, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)"
@@ -90,7 +90,7 @@
                         <div class="margin-bottom-2">Mais um texto do carrossel</div>
                         <div class="flexh-align-center wrap-xs">
                             <a data-w-id="fa783e8c-c3e1-54ac-265a-cc3990601e9c" href="spare-part-page.html"
-                                class="button-primary animated margin-bottom-small w-inline-block">
+                                class="button-primary margin-bottom-small w-inline-block">
                                 <div style="-webkit-transform:translate3d(0, 0PX, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 0PX, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 0PX, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 0PX, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:1"
                                     class="button-primary-text">Alugue Agora!</div>
                                 <div style="opacity:0;display:block;-webkit-transform:translate3d(0, 20PX, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 20PX, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 20PX, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 20PX, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)"
@@ -112,12 +112,12 @@
     </div>
 </div>
 <div class="section is-dark">
-    <div class="container flex-vertical flexv-align-center margin-bottom margin-top">
+    <div class="container flex-vertical flexv-align-center margin-top">
         <div class="pre-title on-dark">Alugue agora!</div>
-        <h2 class="size-h2 size-h2-xs margin-bottom-2 text-align-center">Confira nossas melhores promoções!</h2>
+        <h2 class="size-h2 size-h2-xs text-align-center">Confira nossas melhores promoções!</h2>
     </div>
 </div>
-<div class="section is-dark">
+<div class="section is-dark pt-0">
     <div class="container">
         <div class="row row-fluid justify-content-center">
             {{#each pool}}
@@ -162,7 +162,11 @@
 
                     </div>
                     <div class="w-100 card-footer text-white py-0">
-                        Disponível
+                        {{#if this.disponivel}}
+                        <div class="float-right"><i class="fas fa-check-circle"></i>Disponível</div>
+                        {{else}}
+                        <div class="float-right"><i class="fas fa-check-calendar-times"></i>Reservado</div>
+                        {{/if}}
                     </div>
                 </div>
             </div>
@@ -184,12 +188,12 @@
                 </div>
                 <div class="text-align-center flex-horizontal xs-flexv">
                     <a data-w-id="0c55b2c9-fb86-ddd2-a31a-bc84e6c2aeef" href="product-page.html"
-                        class="button-primary animated lg-md-sm-margin-right xs-margin-bottom w-inline-block">
+                        class="button-primary lg-md-sm-margin-right xs-margin-bottom w-inline-block">
                         <div style="-webkit-transform:translate3d(0, 0PX, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 0PX, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 0PX, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 0PX, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:1"
                             class="button-primary-text">Vamos lá!</div>
                     </a>
                     <a data-w-id="92422ac6-ae17-2895-3517-cf5c44bb4638" href="service.html"
-                        class="button-primary button-ghost-on-dark animated-ghost w-inline-block">
+                        class="button-primary button-ghost-on-dark w-inline-block">
                         <div style="-webkit-transform:translate3d(0, 0PX, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 0PX, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 0PX, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 0PX, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:1"
                             class="button-primary-text">Saiba Mais</div>
                     </a>
@@ -199,37 +203,5 @@
     </div>
 </div>
 
-<div class="section section-footer-dark is-dark">
-    <div class="container margin-bottom">
-        <div class="col lg-3 md-12">
-            <h3 class="logotype is-medium no-margin-trbl">W E B A U T O S J P <br>R E N T A L</h3>
-        </div>
-        <div class="col lg-6 md-12">
-            <div class="flexh-space-between md-flex-vertical">
-                <a href="#" class="footer-nav-link is-bold on-dark">Sobre Nós</a>
-                <a href="#" class="footer-nav-link is-bold on-dark">Serviços</a>
-                <a href="#" class="footer-nav-link is-bold on-dark">Nosso Grupo</a>
-                <a href="#" class="footer-nav-link is-bold on-dark">Contato</a>
-            </div>
-        </div>
-        <div class="col lg-3 md-12">
-            <div class="flexh-justify-end md-flexh-justify-start">
-                <div class="fa-brand margin-right-small"></div>
-                <div class="fa-brand margin-right-small"></div>
-                <div class="fa-brand margin-right-small"></div>
-                <div class="fa-brand margin-right-small"></div>
-            </div>
-        </div>
-    </div>
-    <div class="container flexh-justify-center md-flexh-justify-left">
-        <div class="col lg-6 margin-bottom">
-            <div class="low-text-contrast text-small flexh-space-between md-flex-vertical">
-                <div class="md-order-first">©2021 WebAutosJP. Todos os direitos reservados. </div>
-                <div class="md-order-last">Powered by BemTeVi WebDesign</div>
-                <a href="#" class="footer-bottom-link on-dark">Política de Privacidade</a>
-                <a href="#" class="footer-bottom-link on-dark">Termos de Serviço</a>
-            </div>
-        </div>
-    </div>
-</div>
+{{> footer }}
 <!-- [if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif] -->
