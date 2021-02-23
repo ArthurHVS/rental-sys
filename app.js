@@ -1,5 +1,6 @@
 // Requires das dependências
 const express = require('express');
+const helmet = require('helmet');
 const bodyParser = require('body-parser');
 const MongoClient = require('mongodb').MongoClient;
 const bcrypt = require('bcryptjs');
@@ -9,6 +10,18 @@ const path = require('path');
 var session = require('cookie-session');
 
 const app = express();
+
+app.use(helmet.dnsPrefetchControl());
+app.use(helmet.expectCt());
+app.use(helmet.frameguard());
+app.use(helmet.hidePoweredBy());
+
+app.use(helmet.ieNoOpen());
+app.use(helmet.noSniff());
+app.use(helmet.permittedCrossDomainPolicies());
+app.use(helmet.referrerPolicy());
+app.use(helmet.xssFilter());
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
