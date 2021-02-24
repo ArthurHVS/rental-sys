@@ -29,7 +29,7 @@ router.get('/my-profile/:logged', (req, res) => {
 });
 
 router.get('/:logged/', (req, res) => {
-    var sess = req.session;
+    // var sess = req.session;
     var carros = [];
     MongoClient.connect(process.env.MONGO_URL, { useNewUrlParser: true }, function (err, client) {
         const db = client.db('autoloc');
@@ -57,7 +57,7 @@ router.get('/:logged/', (req, res) => {
 
 });
 router.get('/', (req, res) => {
-    var sess = req.session;
+    // var sess = req.session;
     var carros = [];
     MongoClient.connect(process.env.MONGO_URL, { useNewUrlParser: true }, function (err, client) {
         const db = client.db('autoloc');

@@ -7,7 +7,7 @@ const bcrypt = require('bcryptjs');
 const hbs = require('express-handlebars');
 const path = require('path');
 
-var session = require('cookie-session');
+// var session = require('cookie-session');
 
 const app = express();
 
@@ -30,14 +30,14 @@ const clientRoutes = require('./api/routes/client');
 const adminRoutes = require('./api/routes/admin')
 const loginRoutes = require('./api/routes/login');
 
-app.use(session({
-    secret: 'shhh',
-    email: 'shh@shh.shh.sh',
-    saveUninitialized: true,
-    resave: true,
-    me: null,
-    cookie: {}
-}))
+// app.use(session({
+//     secret: 'shhh',
+//     email: 'shh@shh.shh.sh',
+//     saveUninitialized: true,
+//     resave: true,
+//     me: null,
+//     cookie: {}
+// }))
 
 
 // Handlebars Engine
