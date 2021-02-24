@@ -1,0 +1,19 @@
+{{> navbar}}
+<div class="section pattern-back">
+    <div class="row row-fluid">
+        <h2 class="text-align-center text-light">Confira todos os carros disponíveis</h2>
+    </div>
+</div>
+<div class="section is-dark pt-2">
+    <div class="container">
+        <div class="row row-fluid justify-content-center">
+            {{#each catalog}}
+            <div class="col col-lg-6 col-sm-10 justify-content-center">
+                {{> car_card}}
+            </div>
+            {{/each}}
+        </div>
+    </div>
+</div>
+
+{{> footer}}

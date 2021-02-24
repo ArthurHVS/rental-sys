@@ -1,0 +1,27 @@
+<div class="card w-100 text-light bg-secondary align-items-center py-0">
+    <div class="card-header w-100 float-left">
+        <div class="float-left"><img width="32" src="/images/svg/{{this.brand}}.svg"></img></div>
+        <div class="float-right">
+            <h4>{{this.model}}</h4>
+        </div>
+    </div>
+    <img class="card-img-top" src={{this.image}} alt="" />
+
+    <div class="card-body py-1">
+        <a href="/car/{{this.slug}}" class="m-2 col col-12 btn btn-lg btn-dark">
+            Detalhes
+        </a>
+
+        <a class="col m-2 col-12 btn btn-lg btn-success" onclick="popup('{{this.model}}','{{this.brand}}','{{this.slug}}')">
+            Alugue 
+        <i class="fa fa-whatsapp" aria-hidden="true"></i></a>
+
+    </div>
+    <div class="w-100 card-footer text-white py-0">
+        {{#if this.disponivel}}
+        <div class="float-right"><i class="fas fa-check-circle"></i>Disponível</div>
+        {{else}}
+        <div class="float-right"><i class="fas fa-check-calendar-times"></i>Reservado</div>
+        {{/if}}
+    </div>
+</div>

@@ -10,5 +10,10 @@ module.exports = {
             return true
         }
         else return false;
+    },
+    ten_based: function (num) {
+        if (num % 10 == 0) {
+            return true
+        }        
     }
 }

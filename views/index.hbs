@@ -1,17 +1,15 @@
 {{> navbar navUsr=user}}
 <div class="pattern-back">
     <div class="row row-fluid section">
-        <h1 class="text-align-center text-light">Alugue os melhores
-            carros, pelo melhor preço!</h1>
-        <div class="flexh-justify-center xs-is-wrapping">
-            <a data-w-id="9550d434-deb5-5db5-e302-0b0463b69108" href="product-page.html"
-                class="button-primary m-auto">
+        <h1 class="text-align-center text-light py-3">Alugue os melhores
+            carros pelo melhor preço!</h1>
+        <div class=" xs-is-wrapping">
+            <a data-w-id="9550d434-deb5-5db5-e302-0b0463b69108" href="/client/catalogo" class="button-primary m-auto">
                 <div class="button-primary-text">Confira nosso catálogo</div>
             </a>
-            <a data-w-id="2870347f-3e1a-a5ea-5bd0-f6f9f730f7d6" href="service.html"
-                class="button-primary m-auto">
+            {{!-- <a data-w-id="2870347f-3e1a-a5ea-5bd0-f6f9f730f7d6" href="service.html" class="button-primary m-auto">
                 <div class="button-primary-text">Sobre nós</div>
-            </a>
+            </a> --}}
         </div>
     </div>
 </div>
@@ -55,8 +53,7 @@
                         <div class="margin-bottom-2">Quando você reserva um carro, nós realizamos todos os trâmites
                             burocráticos com o proprietário.</div>
                         <div class="flexh-align-center wrap-xs">
-                            <a href="spare-part-page.html"
-                                class="button-primary margin-bottom-small w-inline-block">
+                            <a href="spare-part-page.html" class="button-primary margin-bottom-small w-inline-block">
                                 <div class="button-primary-text">Alugue Agora!</div>
                             </a>
                         </div>
@@ -120,57 +117,13 @@
 <div class="section is-dark pt-0">
     <div class="container">
         <div class="row row-fluid justify-content-center">
-            {{#each pool}}
-            <div class="col col-lg-4 col-sm-10 justify-content-center">
-                <div class="card text-light bg-secondary align-items-center py-0">
-                    <div class="card-header w-100 float-left">
-                        <div class="float-left"><img width="32" src="/images/svg/{{this.brand}}.svg"></img></div>
-                        <div class="float-right">
-                            <h4>{{this.model}}</h4>
-                        </div>
-                    </div>
-                    <img class="card-img-top" src={{this.image}} alt="" />
-
-                    <div class="card-body py-0 w-100 text-center">
-                        <div class="container container-fluid">
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th class="px-0" scope="col"><i class="fas fa-users"></i>Reviews</th>
-                                        <th scope="col"><i class="fas fa-star"></i>Média</th>
-                                    </tr>
-                                    <tr>
-                                        <td>{{#if
-                                            this.aggregateRating.reviewCount}}{{this.aggregateRating.reviewCount}}{{else}}0{{/if}}
-                                        </td>
-                                        <td>{{#if
-                                            this.aggregateRating.ratingValue}}{{this.aggregateRating.ratingValue}}{{else}}
-                                            -
-                                            {{/if}}
-                                        </td>
-                                    </tr>
-                                </thead>
-                            </table>
-
-
-                        </div>
-                        <a href="/car/{{this.slug}}" class="col col-12 btn btn-lg btn-dark">Detalhes</a>
-
-                        <a class="col col-12 btn btn-lg btn-success"
-                            onclick="popup('{{this.model}}','{{this.brand}}','{{this.slug}}')">Alugue <i class="fa fa-whatsapp"
-                                aria-hidden="true"></i></a>
-
-                    </div>
-                    <div class="w-100 card-footer text-white py-0">
-                        {{#if this.disponivel}}
-                        <div class="float-right"><i class="fas fa-check-circle"></i>Disponível</div>
-                        {{else}}
-                        <div class="float-right"><i class="fas fa-check-calendar-times"></i>Reservado</div>
-                        {{/if}}
-                    </div>
+            
+                {{#each pool}}
+                <div class="col col-lg-6 col-sm-10 justify-content-center">
+                {{> car_card}}
                 </div>
-            </div>
-            {{/each}}
+                {{/each}}
+            
         </div>
     </div>
 </div>
@@ -187,7 +140,7 @@
                             experiência em aluguel de carros...</strong></div>
                 </div>
                 <div class="text-align-center flex-horizontal xs-flexv">
-                    <a data-w-id="0c55b2c9-fb86-ddd2-a31a-bc84e6c2aeef" href="product-page.html"
+                    <a data-w-id="0c55b2c9-fb86-ddd2-a31a-bc84e6c2aeef" href="#"
                         class="button-primary lg-md-sm-margin-right xs-margin-bottom w-inline-block">
                         <div style="-webkit-transform:translate3d(0, 0PX, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 0PX, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 0PX, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 0PX, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);opacity:1"
                             class="button-primary-text">Vamos lá!</div>

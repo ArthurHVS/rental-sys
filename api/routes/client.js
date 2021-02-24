@@ -9,6 +9,21 @@ router.get('*/home', (req, res) => {
     res.redirect('/');
 });
 
+router.get('/catalogo', (req, res) => {
+    var carros = [];
+    MongoClient.connect(process.env.MONGO_URL, { useNewUrlParser: true }, function (err, client) {
+        const db = client.db('autoloc');
+        const catCol = db.collection('car-pool');
+        const catAgg = catCol.aggregate([{ $sample: { size: 70 } }])
+        catAgg.forEach(car => {
+            carros.push(car);
+        }, function () {
+            res.render('catalog', { catalog: carros, title: 'Luxury Cars Rental - Catálogo Completo' })
+        })
+        client.close();
+    })
+});
+
 router.get('/my-profile/:logged', (req, res) => {
 
     MongoClient.connect(process.env.MONGO_URL, { useNewUrlParser: true }, function (err, client) {
@@ -45,11 +60,11 @@ router.get('/:logged/', (req, res) => {
                         if (err) {
                             throw err;
                         }
-                        res.render('index', { pool: carros, user: doc })
+                        res.render('index', { pool: carros, title: 'Luxury Cars Rental JP', user: doc })
                     });
                 }
                 else {
-                    res.render('index', { pool: carros, user: null })
+                    res.render('index', { pool: carros, title: 'Luxury Cars Rental JP', user: null })
                 }
             })
         })
@@ -66,7 +81,7 @@ router.get('/', (req, res) => {
         poolAgg.forEach(car => {
             carros.push(car);
         }, function () {
-            res.render('index', { pool: carros })
+            res.render('index', { pool: carros, title: 'Luxury Cars Rental JP' })
         })
 
         client.close();

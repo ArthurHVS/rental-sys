@@ -14,7 +14,7 @@ router.get('/', (req,res) => {
             poolAgg.forEach(car => {
                 carros.push(car);
             },function(){
-                res.render('index',{pool: carros, user: null})
+                res.render('index',{pool: carros, title:'Luxury Cars Rental JP', user: null})
             })
     
             client.close();
