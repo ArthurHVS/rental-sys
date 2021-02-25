@@ -19,9 +19,8 @@ function popup(car, brand, slug) {
             return { nome: name, dias: days, telefone: phone, carro: finalTitle, slug: slug }
         }
     }).then((result) => {
-        console.log(JSON.stringify(result))
         $.ajax({
-            url: '/handshake',
+            url: '/client/handshake',
             type: 'POST',
             data: result,
             cache: false,

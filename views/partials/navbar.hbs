@@ -14,7 +14,16 @@
                     <a class="nav-link" href="/home"><i class="fas fa-home"></i> Home <span
                             class="sr-only">(current)</span></a>
                 </li>
-                
+            </ul>
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    {{#if context.loggedIn}}
+                        <a class="nav-link" href="/my-profile"><i class="fas fa-user"></i> Perfil</a>
+                        <a class="nav-link" href="/logout"><i class="fas fa-power-off"></i> Logout</a>
+                    {{else}}
+                        <a class="nav-link" href="/login"><i class="fas fa-user"></i> Login</a>
+                    {{/if}}
+                </li>
             </ul>
             <form class="form-inline my-2 my-md-0">
                 <input class="form-control" type="text" placeholder="Busca" aria-label="Search">

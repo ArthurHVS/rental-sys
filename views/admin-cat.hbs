@@ -1,0 +1,31 @@
+<div id="wrapper" style="height: fit-content !important;">
+
+    {{> navbar_admin}}
+
+    {{> admin_leftbar}}
+
+    <div class="content-page">
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card-box">
+                            <div class="dropdown float-right">
+                                <a href="#" class="dropdown-toggle arrow-none card-drop" data-toggle="dropdown"
+                                    aria-expanded="false">
+                                    <i class="mdi mdi-dots-vertical"></i>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                    <a href="#" class="dropdown-item">Opção 1</a>
+                                </div>
+                            </div>
+                            <h4 class="header-title mt-0 mb-3">Adicionar no catálogo</h4>
+                            <form action="adding" method="POST">
+                                <input name="url" type="text"/>
+                                <input href="#" class="btn btn-success" value="Link Anyca" type="submit">
+                            </form>
+                        </div>
+                    </div>
+                    {{> footer_admin}}
+                </div>
+            </div>

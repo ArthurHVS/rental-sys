@@ -15,5 +15,11 @@ module.exports = {
         if (num % 10 == 0) {
             return true
         }        
+    },
+    jsonMe: function(objeto){
+        return JSON.stringify(objeto)
+    },
+    consoleMe: function(objeto){
+        console.log(objeto);
     }
 }
