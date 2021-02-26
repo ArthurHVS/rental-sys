@@ -73,6 +73,10 @@ app.get('/car/:slug/:id', (req, res) => {
         });
     });
 });
+app.get('/register', (req, res) => {
+    // req.session = {};
+    res.render('register', {layout: 'login-layout'});
+})
 app.get('/logout', (req, res) => {
     req.session = null;
     res.redirect('/');

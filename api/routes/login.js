@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
     if (req.session.loggedIn) {
         res.redirect('/');
     }
-    res.render('login', { layout: 'login-layout' });
+    res.render('login2', { layout: 'login-layout' });
 });
 
 router.post('/attempt', (req, res) => {

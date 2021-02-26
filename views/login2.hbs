@@ -1,0 +1,129 @@
+<div id="preloader">
+    <div data-loader="circle-side"></div>
+</div><!-- /Preload -->
+
+<div id="loader_form">
+    <div data-loader="circle-side-2"></div>
+</div><!-- /loader_form -->
+
+<main>
+    <div id="form_container">
+        <div class="row">
+            <div class="col-lg-5">
+                <div id="left_form">
+                    <figure><img src="img/registration_bg.svg" alt=""></figure>
+                    <h2>Login</h2>
+                    <p>Faça login para realizar suas reservas</p>
+                    <a href="#0" id="more_info" data-toggle="modal" data-target="#more-info"><i
+                            class="pe-7s-info"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-7">
+                <!-- /top-wizard -->
+                <form action="/login/attempt" method="POST">
+                    <input id="website" name="website" type="text" value="">
+                    <!-- Leave for security protection, read docs for details -->
+                    <div class="row pt-2">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="email" name="email" class="form-control " placeholder="Seu Email">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="password" name="password" class="form-control " placeholder="Sua senha">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /row -->
+
+                    <button class="btn btn-success" type="submit">Login</button>
+                    <a href="/register" class="btn btn-success">Cadastro</a>
+                    <!-- /step-->
+                    <!-- /Form_container -->
+                </form>
+
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer id="home" class="clearfix">
+    <p>Powered by: <a href="https://bemtevi.dev.br">BemTeVi WebDesign</a></p>
+    <ul>
+        <li><a class="animated-link" href="#" data-toggle="modal" data-target="#terms-txt">Termos e condições</a></li>
+        <li><a href="#0" class="animated_link">Contatos</a></li>
+    </ul>
+</footer>
+<!-- end footer-->
+
+<div class="cd-overlay-nav">
+    <span></span>
+</div>
+<!-- cd-overlay-nav -->
+
+<div class="cd-overlay-content">
+    <span></span>
+</div>
+<!-- cd-overlay-content -->
+
+<!-- Modal terms -->
+<div class="modal fade" id="terms-txt" tabindex="-1" role="dialog" aria-labelledby="termsLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="termsLabel">Terms and conditions</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Esse é um parágrafo dos nossos <strong>termos e condições</strong>, e eu acredito que você aceita
+                    ele, pelo menos.</p>
+                <p>Claro que o texto que vai aqui é mais jurídico do que isso, mas a gente <strong>precisa desse
+                        conteúdo</strong>, senão não funciona!</p>
+                <p>Lorem ipsum dolor sit amet, in porro albucius qui, in nec quod novum accumsan, mei ludus tamquam
+                    dolores id. No sit debitis meliore postulant, per ex prompta alterum sanctus, pro ne quod dicunt
+                    sensibus.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn_1" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+
+<!-- Modal info -->
+<div class="modal fade" id="more-info" tabindex="-1" role="dialog" aria-labelledby="more-infoLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="more-infoLabel">Frequently asked questions</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Lorem ipsum dolor sit amet, in porro albucius qui, in <strong>nec quod novum accumsan</strong>, mei
+                    ludus tamquam dolores id. No sit debitis meliore postulant, per ex prompta alterum sanctus, pro ne
+                    quod dicunt sensibus.</p>
+                <p>Lorem ipsum dolor sit amet, in porro albucius qui, in nec quod novum accumsan, mei ludus tamquam
+                    dolores id. No sit debitis meliore postulant, per ex prompta alterum sanctus, pro ne quod dicunt
+                    sensibus. Lorem ipsum dolor sit amet, <strong>in porro albucius qui</strong>, in nec quod novum
+                    accumsan, mei ludus tamquam dolores id. No sit debitis meliore postulant, per ex prompta alterum
+                    sanctus, pro ne quod dicunt sensibus.</p>
+                <p>Lorem ipsum dolor sit amet, in porro albucius qui, in nec quod novum accumsan, mei ludus tamquam
+                    dolores id. No sit debitis meliore postulant, per ex prompta alterum sanctus, pro ne quod dicunt
+                    sensibus.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn_1" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
