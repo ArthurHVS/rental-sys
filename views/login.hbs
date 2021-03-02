@@ -11,7 +11,6 @@
         <div class="row">
             <div class="col-lg-5">
                 <div id="left_form">
-                    <figure><img src="img/registration_bg.svg" alt=""></figure>
                     <h2>Login</h2>
                     <p>Faça login para realizar suas reservas</p>
                     <a href="#0" id="more_info" data-toggle="modal" data-target="#more-info"><i
@@ -20,7 +19,7 @@
             </div>
             <div class="col-lg-7">
                 <!-- /top-wizard -->
-                <form action="/login/attempt" method="POST">
+                <form class="px-2" action="/login/attempt" method="POST">
                     <input id="website" name="website" type="text" value="">
                     <!-- Leave for security protection, read docs for details -->
                     <div class="row pt-2">
@@ -52,10 +51,10 @@
 </main>
 
 <footer id="home" class="clearfix">
-    <p>Powered by: <a href="https://bemtevi.dev.br">BemTeVi WebDesign</a></p>
+    <p>Powered by: <a href="https://bemtevi.dev.br" target="_blank">BemTeVi WebDesign</a></p>
     <ul>
-        <li><a class="animated-link" href="#" data-toggle="modal" data-target="#terms-txt">Termos e condições</a></li>
-        <li><a href="#0" class="animated_link">Contatos</a></li>
+        {{!-- <li><a class="animated-link" href="#" data-toggle="modal" data-target="#terms-txt">Termos e condições</a></li> --}}
+        {{!-- <li><a href="#0" class="animated_link">Contatos</a></li> --}}
     </ul>
 </footer>
 <!-- end footer-->

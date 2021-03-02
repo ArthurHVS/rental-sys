@@ -90,9 +90,9 @@
                                 <h3 class="main_question"><strong>2/3</strong>Documentos Pessoais</h3>
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <div class="form-group">
-                                            <input type="text" name="zairyu" class="form-control"
-                                                placeholder="Zairyu Card">
+                                        <div class="custom-file my-2">
+                                            <input type="file" class="custom-file-input" id="menko" name="menko">
+                                            <label class="custom-file-label" for="menko">Habilitação (Menko)</label>
                                         </div>
                                     </div>
                                     <!-- /col-sm-12 -->
@@ -100,9 +100,9 @@
                                 <!-- /row -->
                                 <div class="row">
                                     <div class="col-12">
-                                        <div class="form-group">
-                                            <input type="text" name="menko" class="form-control"
-                                                placeholder="Habilitação (Menko)">
+                                        <div class="custom-file">
+                                            <input type="file" class="custom-file-input" id="zairyu">
+                                            <label class="custom-file-label" for="zairyu">Zairyu Card (frente e verso)</label>
                                         </div>
                                     </div>
                                 </div>
@@ -134,7 +134,7 @@
                                 <div class="form-group terms">
                                     <input name="terms" type="checkbox" class="icheck required" value="yes">
                                     <label>Declaro que li e aceito os <a href="#" data-toggle="modal"
-                                            data-target="#terms-txt">termos e condições</a> ?</label>
+                                            data-target="#terms-txt">termos e condições</a>.</label>
                                 </div>
                             </div>
                             <!-- /step-->
@@ -157,8 +157,8 @@
 <footer id="home" class="clearfix">
     <p>Powered by: <a href="https://bemtevi.dev.br">BemTeVi WebDesign</a></p>
     <ul>
-        <li><a class="animated-link" href="#" data-toggle="modal" data-target="#terms-txt">Termos e condições</a></li>
-        <li><a href="#0" class="animated_link">Contatos</a></li>
+        {{!-- <li><a class="animated-link" href="#" data-toggle="modal" data-target="#terms-txt">Termos e condições</a></li> --}}
+        {{!-- <li><a href="#0" class="animated_link">Contatos</a></li> --}}
     </ul>
 </footer>
 <!-- end footer-->

@@ -9,6 +9,28 @@ router.get('*/home', (req, res) => {
     res.redirect('/');
 });
 
+router.post('/search', (req, res) => {
+    var carros = [];
+    const termo = req.body.termo.toUpperCase();
+    MongoClient.connect(process.env.MONGO_URL, { useNewUrlParser: true }, function (err, client) {
+        const db = client.db('autoloc');
+        const catCol = db.collection('car-pool');
+        catCol.find({
+            $or:[
+                {"brand":{"$in":[req.body.params,termo]}},
+                {"model":{"$in":[req.body.params,termo]}}
+            ]
+        },function (err, doc) {
+            doc.forEach(car => {
+                carros.push(car);
+            }, function () {
+                res.render('catalog', { catalog: carros, call: "Busca:" + " '" + req.body.termo.toUpperCase() +"'", title: 'Luxury Cars Rental - Busca' })
+            })
+        })
+    })
+
+});
+
 router.get('/catalogo', (req, res) => {
     var carros = [];
     MongoClient.connect(process.env.MONGO_URL, { useNewUrlParser: true }, function (err, client) {
@@ -33,7 +55,7 @@ router.get('/categoria/:categoria', (req, res) => {
                 doc.forEach(car => {
                     carros.push(car);
                 }, function () {
-                    res.render('catalog', { catalog: carros, title: 'Luxury Cars Rental - Carros ' + req.params.categoria })
+                    res.render('catalog', { catalog: carros, call: req.params.categoria.toUpperCase(), title: 'Luxury Cars Rental - Carros ' + req.params.categoria })
                 })
             })
         client.close();
