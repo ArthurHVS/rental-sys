@@ -19,6 +19,15 @@ module.exports = {
     jsonMe: function(objeto){
         return JSON.stringify(objeto)
     },
+    strCut: function(str, str2){
+        if((str.length + str2.length) > 24) {
+            var strfinal = str.concat(' ',str2.substring(0,12),'...')
+            return strfinal;
+        }
+        else {
+            return str + str2;
+        }
+    },
     consoleMe: function(objeto){
         console.log(objeto);
     }

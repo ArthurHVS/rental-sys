@@ -35,8 +35,12 @@
             {{/if}}
             </li>
             </ul>
-            <form class="form-inline my-2 my-md-0">
-                <input class="form-control" type="text" placeholder="Busca" aria-label="Search">
+            <form action="/search" class="form-inline my-2 my-md-0" method="GET">
+                <div class="container d-flex">
+                    <input class="form-control mb-2" style="width: 70% !important;" name="term" type="text" placeholder="Busca" aria-label="Search">
+                    <button type="submit" class="btn btn-dark"><i class="fas fa-search"></i></button>
+                </div>
+
             </form>
         </div>
     </div>

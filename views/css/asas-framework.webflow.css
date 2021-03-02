@@ -204,7 +204,11 @@ p {
 }
 
 a {
-  color: #1352ff;
+  color: #d7e0f7;
+  text-decoration: none;
+}
+a:hover {
+  color: #686b74;
   text-decoration: none;
 }
 

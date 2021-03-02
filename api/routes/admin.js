@@ -199,7 +199,15 @@ router.get('/:mdb', (req, res) => {
     }
 });
 router.get('/', (req, res) => {
-    res.redirect('/login');
+    if (!req.session.adm_flag){
+        if (req.session)
+            res.redirect('/client/');
+        else    
+            res.redirect('/login');
+    }
+    else {
+        res.redirect('/admin/'+req.session.name);
+    }
 });
 
 module.exports = router;

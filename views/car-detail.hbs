@@ -17,7 +17,7 @@
             <div class="">
                 <div class="float-left px-4"><img width="60" src="/images/svg/{{carro.brand}}.svg"></img></div>
                 <div class="float-left text-white">
-                    <h1>{{carro.brand}} {{carro.model}}</h1>
+                    <h1>{{strCut carro.brand carro.model}}</h1>
                 </div>
                 <div class="container">
                     <a data-w-id="46644e54-5805-3216-447a-8c379a18a0d0" href="#"
@@ -73,27 +73,23 @@
                         <div class="col lg-12 no-padding-lr">
                             <div data-delay="0" class="c-accordion2 is-dark w-dropdown">
                                 <div class="c-accordion2__toggle is-white w-dropdown-toggle">
-                                    <div class="c-accordion__title"><strong>Taxa de serviço</strong></div>
+                                    <div class="c-accordion__title"><strong>Taxas de serviço</strong></div>
                                     <div class="w-icon-dropdown-toggle"></div>
                                 </div>
                                 <nav class="c-accordion2__content is-dark w-dropdown-list">
-                                    <div class="text-block">{{carro.taxa}}</div>
-                                </nav>
-                            </div>
-                            <div data-delay="0" class="c-accordion2 is-dark w-dropdown">
-                                <div class="c-accordion2__toggle is-white w-dropdown-toggle">
-                                    <div class="c-accordion__title"><strong>Seguro</strong><br>
+                                    <div class="text-block">
+                                        <ul>
+                                            <li>¥ 7480 Cadastro Inicial Anyca</li>
+                                            <li>¥ 2980 por reserva + ¥ 1000 por dia, ou ¥ 6480 por mês (reservas ilimitadas)</li>
+                                            <li>¥ 100 Assinatura de contrato</li>
+                                        </ul>
                                     </div>
-                                    <div class="w-icon-dropdown-toggle"></div>
-                                </div>
-                                <nav class="c-accordion2__content is-dark w-dropdown-list">
-                                    <div class="text-block">{{this.seguro}}</div>
                                 </nav>
                             </div>
                         </div>
                     </div>
                     <div data-w-tab="Tab 2" class="w-tab-pane">
-                        <div></div>
+                        <div><li>Em todos os aluguéis são cobradas as taxas de seguro (¥ 2600) e assinatura de contrato (¥ 100).</li></div>
                     </div>
                 </div>
             </div>

@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
     if (req.session.loggedIn) {
         res.redirect('/');
     }
-    res.render('login2', { layout: 'login-layout' });
+    res.render('login', { layout: 'login-layout', title: 'Login - Luxury Rental Cars JP' });
 });
 
 router.post('/attempt', (req, res) => {
@@ -32,9 +32,11 @@ router.post('/attempt', (req, res) => {
                         req.session.name = doc._id;
                         req.session.picSrc = doc.profPic;
                         if (doc.admin == true) {
+                            req.session.adm_flag = true;
                             res.redirect('/admin/' + doc._id);
                         }
                         else {
+                            req.session.adm_flag = false;
                             res.redirect('/client/')
                         }
                         return true;
