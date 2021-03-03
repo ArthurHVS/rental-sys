@@ -10,8 +10,7 @@
     <div id="form_container">
         <div class="row">
             <div class="col-lg-5">
-                <div id="left_form">
-                    <figure><img src="img/registration_bg.svg" alt=""></figure>
+                <div class="long_l_form" id="left_form">
                     <h2>Registre-se</h2>
                     <p>Todas as informações requisitadas são necessárias para realizar seu cadastro na plataforma Anyca,
                         e nunca serão compartilhadas com terceiros.</p>
@@ -19,145 +18,111 @@
                             class="pe-7s-info"></i></a>
                 </div>
             </div>
-            <div class="col-lg-7">
-
+            <div class="col-lg-6 my-4">
                 <div id="wizard_container">
-                    <div id="top-wizard">
-                        <div id="progressbar"></div>
-                    </div>
                     <!-- /top-wizard -->
-                    <form name="example-1" id="wrapped" method="POST">
+                    <form action="register/add/" id="wrapped" method="POST"
+                        oninput='pass.setCustomValidity(pass_conf.value != pass.value ? "Senhas não combinam" : "")'>
                         <input id="website" name="website" type="text" value="">
                         <!-- Leave for security protection, read docs for details -->
-                        <div id="middle-wizard">
-
-                            <div class="step">
-                                <h3 class="main_question"><strong>1/3</strong>Detalhes básicos</h3>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <input type="text" name="completeName" class="form-control "
-                                                placeholder="Nome Completo">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <input type="text" name="telephone" class="form-control"
-                                                placeholder="Seu Whatsapp">
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- /row -->
-
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <input type="email" name="email" class="form-control "
-                                                placeholder="Seu Email">
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <input type="password" name="pass" class="form-control "
-                                                placeholder="Sua senha">
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <input type="password" name="pass_conf" class="form-control "
-                                                placeholder="Repita sua senha">
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- /row -->
-
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div class="form-group">
-                                            <input type="text" name="age" class="form-control" placeholder="Idade">
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- /row -->
-                            </div>
-                            <!-- /step-->
-
-                            <div class="step">
-                                <h3 class="main_question"><strong>2/3</strong>Documentos Pessoais</h3>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="custom-file my-2">
-                                            <input type="file" class="custom-file-input" id="menko" name="menko">
-                                            <label class="custom-file-label" for="menko">Habilitação (Menko)</label>
-                                        </div>
-                                    </div>
-                                    <!-- /col-sm-12 -->
-                                </div>
-                                <!-- /row -->
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div class="custom-file">
-                                            <input type="file" class="custom-file-input" id="zairyu">
-                                            <label class="custom-file-label" for="zairyu">Zairyu Card (frente e verso)</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- /row -->
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <div class="styled-select">
-                                                <select class="" name="gender">
-                                                    <option value="" selected>Gênero</option>
-                                                    <option value="mas">Masculino</option>
-                                                    <option value="fem">Feminino</option>
-                                                    <option value="pnd">Prefiro não dizer</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- /row -->
-                            </div>
-                            <!-- /step-->
-
-                            <div class="submit step">
-                                <h3 class="main_question"><strong>3/3</strong>Se quiser, nos envie uma mensagem! ;)</h3>
+                        <h3 class="main_question">Detalhes básicos</h3>
+                        <div class="row">
+                            <div class="col-md-6">
                                 <div class="form-group">
-                                    <textarea name="additional_message" class="form-control" style="height:150px;"
-                                        placeholder="Mas só se quiser..."></textarea>
-                                </div>
-                                <div class="form-group terms">
-                                    <input name="terms" type="checkbox" class="icheck required" value="yes">
-                                    <label>Declaro que li e aceito os <a href="#" data-toggle="modal"
-                                            data-target="#terms-txt">termos e condições</a>.</label>
+                                    <input type="text" name="completeName" class="form-control required"
+                                        placeholder="Nome Completo">
                                 </div>
                             </div>
-                            <!-- /step-->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" name="whatsapp" class="form-control required"
+                                        placeholder="Seu Whatsapp">
+                                </div>
+                            </div>
                         </div>
-                        <!-- /middle-wizard -->
-                        <div id="bottom-wizard">
-                            <button type="button" name="backward" class="backward">Anterior </button>
-                            <button type="button" name="forward" class="forward">Próximo</button>
-                            <button type="submit" name="process" class="submit">Enviar</button>
+                        <!-- /row -->
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <input type="email" name="email" class="form-control required"
+                                        placeholder="Seu Email">
+                                </div>
+                            </div>
                         </div>
-                        <!-- /bottom-wizard -->
-                    </form>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input id="pass" type="password" name="pass" class="form-control required"
+                                        placeholder="Sua senha">
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input id="pass_conf" type="password" name="pass_conf" class="form-control required"
+                                        placeholder="Repita sua senha">
+                                </div>
+                            </div>
+                            <span id="message"></span>
+                        </div>
+                        <!-- /row -->
+
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <input type="number" min="18" name="age" class="form-control" placeholder="Idade">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <div class="styled-select">
+                                        <select class="" name="gender">
+                                            <option value="" selected>Gênero</option>
+                                            <option value="mas">Masculino</option>
+                                            <option value="fem">Feminino</option>
+                                            <option value="pnd">Prefiro não dizer</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="submit step">
+                            <div class="form-group terms">
+                                <input id="terms" name="terms" type="checkbox" class="icheck required" value="yes">
+                                <label for="terms">Declaro que li e aceito os <a href="#" data-toggle="modal"
+                                        data-target="#terms-txt">termos e condições.</a></label>
+                            </div>
+                            <div class="form-group terms">
+                                <input id="newsletter" name="newsletter" type="checkbox" class="icheck" value="true">
+                                <label for="newsletter">Quero receber emails do grupo <a href="https://webautosjp.com" target="_blank">WebAutosJP</a> termos e condições.</a></label>
+                            </div>
+                            <div>
+                                <p> Após o cadastro, nossa equipe irá realizar contato por whatsapp, para que os documentos pessoais sejam confirmados.</p>
+                            </div>
+                        </div>
+                        <!-- /step-->
+                        <button type="submit" class="submit">Enviar</button>
                 </div>
-                <!-- /Wizard container -->
             </div>
-        </div><!-- /Row -->
+            <!-- /bottom-wizard -->
+            </form>
+        </div>
+        <!-- /Wizard container -->
+    </div>
+    </div><!-- /Row -->
     </div><!-- /Form_container -->
 </main>
 
 <footer id="home" class="clearfix">
     <p>Powered by: <a href="https://bemtevi.dev.br">BemTeVi WebDesign</a></p>
     <ul>
-        {{!-- <li><a class="animated-link" href="#" data-toggle="modal" data-target="#terms-txt">Termos e condições</a></li> --}}
+        {{!-- <li><a class="animated-link" href="#" data-toggle="modal" data-target="#terms-txt">Termos e condições</a>
+        </li> --}}
         {{!-- <li><a href="#0" class="animated_link">Contatos</a></li> --}}
     </ul>
 </footer>

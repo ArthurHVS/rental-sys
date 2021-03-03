@@ -9,6 +9,10 @@ router.get('*/home', (req, res) => {
     res.redirect('/');
 });
 
+router.post('/register', (req, res) => {
+    console.log(req.body.menko);
+});
+
 router.post('/search', (req, res) => {
     var carros = [];
     const termo = req.body.termo.toUpperCase();
@@ -16,15 +20,15 @@ router.post('/search', (req, res) => {
         const db = client.db('autoloc');
         const catCol = db.collection('car-pool');
         catCol.find({
-            $or:[
-                {"brand":{"$in":[req.body.params,termo]}},
-                {"model":{"$in":[req.body.params,termo]}}
+            $or: [
+                { "brand": { "$in": [req.body.params, termo] } },
+                { "model": { "$in": [req.body.params, termo] } }
             ]
-        },function (err, doc) {
+        }, function (err, doc) {
             doc.forEach(car => {
                 carros.push(car);
             }, function () {
-                res.render('catalog', { catalog: carros, call: "Busca:" + " '" + req.body.termo.toUpperCase() +"'", title: 'Luxury Cars Rental - Busca' })
+                res.render('catalog', { catalog: carros, call: "Busca:" + " '" + req.body.termo.toUpperCase() + "'", title: 'Luxury Cars Rental - Busca' })
             })
         })
     })
@@ -36,11 +40,11 @@ router.get('/catalogo', (req, res) => {
     MongoClient.connect(process.env.MONGO_URL, { useNewUrlParser: true }, function (err, client) {
         const db = client.db('autoloc');
         const catCol = db.collection('car-pool');
-        const catAgg = catCol.aggregate([{ $sample: { size: 100 } }])
+        const catAgg = catCol.aggregate([{ $sort: { featured: -1 } }])
         catAgg.forEach(car => {
             carros.push(car);
         }, function () {
-            res.render('catalog', { catalog: carros, title: 'Luxury Cars Rental - Catálogo Completo' })
+            res.render('catalog', { catalog: carros, call: 'Catálogo Completo', title: 'Luxury Cars Rental - Catálogo Completo' })
         })
         client.close();
     })
@@ -91,7 +95,10 @@ router.get('/', (req, res) => {
     MongoClient.connect(process.env.MONGO_URL, { useNewUrlParser: true }, function (err, client) {
         const db = client.db('autoloc');
         const carCollection = db.collection('car-pool');
-        const poolAgg = carCollection.aggregate([{ $sample: { size: 12 } }])
+        const poolAgg = carCollection.aggregate([
+            { $sort: { featured: -1 } },
+            { $limit: 9 }
+        ])
         poolAgg.forEach(car => {
             carros.push(car);
         }, function () {

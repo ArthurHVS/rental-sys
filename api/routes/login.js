@@ -3,8 +3,7 @@ const MongoClient = require('mongodb').MongoClient;
 const path = require('path');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
-router.use(express.static(path.join(__dirname, '/client-views')));
-
+const alert = require('alert');
 
 router.get('/', (req, res) => {
     if (req.session.loggedIn) {
@@ -18,7 +17,7 @@ router.post('/attempt', (req, res) => {
         const db = client.db('admin');
 
         const usrCol = db.collection('users');
-        var logged = usrCol.findOne({ "email.address": req.body.email }, function (err, doc) {
+        usrCol.findOne({ "email.address": req.body.email }, function (err, doc) {
             if (err) {
                 throw err;
             }
@@ -42,14 +41,14 @@ router.post('/attempt', (req, res) => {
                         return true;
                     }
                     else {
-                        console.log('Sem chance irmão...');
+                        alert("Sua senha não está correta...");
                         res.redirect('/');
                         return false;
                     }
                 });
             }
             else {
-                console.log("Alerta, seu email nao existe...");
+                alert("Seu email não existe no nosso banco de dados...");
                 return false;
             }
         });

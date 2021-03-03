@@ -714,7 +714,7 @@ span.error:after {
 	height: 44px;
 	box-sizing: border-box;
 	line-height: 1px!important;
-	background: #fff url(../img/arrow_down.svg) no-repeat right center;
+	background: #fff no-repeat right center;
 	border: 0;
 	border-bottom: 2px solid #e8ebed;
 	border-radius: 0;

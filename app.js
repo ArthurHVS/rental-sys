@@ -29,6 +29,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 const clientRoutes = require('./api/routes/client');
 const adminRoutes = require('./api/routes/admin')
 const loginRoutes = require('./api/routes/login');
+const registerRoutes = require('./api/routes/register');
 
 app.use(session({
     secret: 'shhh',
@@ -37,7 +38,6 @@ app.use(session({
     saveUninitialized: false,
     cookie: {}
 }))
-
 
 // Handlebars Engine
 app.engine('hbs', hbs({ extname: 'hbs', helpers: require('./config/handlebars-helpers'), defaultLayout: 'layout', layoutsDir: __dirname + '/views/layouts' }));
@@ -58,13 +58,16 @@ app.use((req, res, next) => {
 app.use('/client', clientRoutes);
 app.use('*/admin', adminRoutes);
 app.use('*/login', loginRoutes);
+app.use('*/register', registerRoutes)
 
 app.get('*/home', (req, res) => {
     res.redirect('/client');
 });
+
 app.get('/', (req, res) => {
     res.redirect('/client');
 });
+
 app.get('/car/:slug/:id', (req, res) => {
     MongoClient.connect(process.env.MONGO_URL, { useNewUrlParser: true }, function (err, client) {
         const db = client.db('autoloc');
@@ -73,15 +76,12 @@ app.get('/car/:slug/:id', (req, res) => {
         });
     });
 });
-app.get('/register', (req, res) => {
-    // req.session = {};
-    res.render('register', {layout: 'login-layout'});
-})
+
 app.get('/logout', (req, res) => {
     req.session = null;
     res.redirect('/');
 })
-// Renders do Erro
+
 app.use((req, res, next) => {
     error = new Error('Essa página não existe...');
     error.status = 404;
@@ -95,7 +95,6 @@ app.use((error, req, res, next) => {
             message: error.message
         }
     })
-})
-
+});
 
 module.exports = app;

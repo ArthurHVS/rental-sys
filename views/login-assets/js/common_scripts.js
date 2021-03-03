@@ -11300,7 +11300,7 @@ $.extend($.validator, {
 	},
 
 	messages: {
-		required: "Required",
+		required: "Campo Obrigatório.",
 		remote: "Please fix this field.",
 		email: "Wrong email.",
 		url: "Please enter a valid URL.",

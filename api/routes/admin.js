@@ -11,8 +11,13 @@ const MongoClient = require('mongodb').MongoClient;
 const ObjectID = require('mongodb').ObjectID;
 const router = express.Router();
 
+router.post('/flag-admin',(req,res)=>{
+    
+    res.render('flag-add', { layout: 'admin-layout', car: [] });
+
+})
+
 router.post('/adding', (req, res) => {
-    var carro = [];
     request(req.body.url, function (err, response, body) {
         if (response) {
             if (response.statusCode == 200) {
@@ -36,13 +41,13 @@ router.post('/adding', (req, res) => {
 
                 var dest = extend({}, result[0], result[1], slugJSON, imgJSON, idJSON);
                 res.render('car-add', { layout: 'admin-layout', car: dest });
-                // console.log(dest.geo);
-                // console.log(JSON.stringify(dest.imgJSON + "aqui"));
             }
         }
     })
-})
+});
+
 router.post('/added', (req, res) => {
+    var mybool = (req.body.featured === true || req.body.featured === "true");
     var mySlug = slug(req.body.brand + " " + req.body.model) + '/' + req.body.url.split('/').pop();
     var bdObj = {
         model: req.body.model,
@@ -67,7 +72,7 @@ router.post('/added', (req, res) => {
         id_num: req.body.id_num,
         disponivel: true,
         our_cat: req.body.bandeira,
-        featured: ""
+        featured: mybool
     }
 
     MongoClient.connect(process.env.MONGO_URL, { useNewUrlParser: true }, function (err, client) {
@@ -78,14 +83,15 @@ router.post('/added', (req, res) => {
             res.redirect('/admin');
         })
     })
-})
+});
+
 router.get('/add-car', (req, res) => {
     var context = {
         pageName: 'Modificando o catálago',
         picSrc: req.session.picSrc,
     }
     res.render('admin-cat', { layout: 'admin-layout', title: 'Adicione um anúncio', context: context })
-})
+});
 
 router.get('/:mdb/fila', (req, res) => {
     var context = {
@@ -132,7 +138,8 @@ router.get('/:mdb/fila', (req, res) => {
             }
         })
     })
-})
+});
+
 router.get('/:mdb', (req, res) => {
     if (ObjectID.isValid(req.params.mdb)) {
         var context = {
@@ -198,6 +205,7 @@ router.get('/:mdb', (req, res) => {
         })
     }
 });
+
 router.get('/', (req, res) => {
     if (!req.session.adm_flag){
         if (req.session)
