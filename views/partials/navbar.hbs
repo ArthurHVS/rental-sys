@@ -8,26 +8,28 @@
             <span class="navbar-toggler-icon"></span>
         </button> --}}
 
-        <div class="collapse navbar-collapse justify-content-end" id="navGroup">
-            <ul class="navbar-nav mr-auto">
+        <div class="navbar justify-content-end" id="navGroup">
+            <ul class="navbar-nav">
                 <li class="nav-item active">
-                    <a class="nav-link" href="/home"><i class="fas fa-home"></i> Home <span
-                            class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="/home"><i class="fas fa-home"></i>
+                        Home
+                        <span class="sr-only">(current)</span>
+                    </a>
                 </li>
             </ul>
             {{#if context.loggedIn}}
-            <ul class="navbar-nav mr-auto">
+            <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link" href="/my-profile"><i class="fas fa-user"></i> Perfil</a>
                 </li>
             </ul>
-            <ul class="navbar-nav mr-auto">
+            <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link" href="/logout"><i class="fas fa-power-off"></i> Logout</a>
                 </li>
             </ul>
             {{else}}
-            <ul class="navbar-nav mr-auto">
+            <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link" href="/login"><i class="fas fa-user"></i> Login</a>
                 </li>
@@ -35,12 +37,12 @@
             {{/if}}
             </li>
             </ul>
-            <form action="/client/search" class="form-inline my-2 my-md-0" method="POST">
-                <div class="container d-flex">
-                    <input class="form-control mb-2" style="width: 70% !important;" name="termo" type="text" placeholder="Busque por marca ou modelo" aria-label="Search">
+            <form action="/client/search" class="form-inline my-2 my-md-0 justify-content-end" method="POST">
+                <div class="container d-flex justify-content-end">
+                    <input class="form-control mb-2" style="width: 70% !important;" name="termo" type="text"
+                        placeholder="Marca ou Modelo" aria-label="Search">
                     <button type="submit" class="btn btn-dark"><i class="fas fa-search"></i></button>
                 </div>
-
             </form>
         </div>
     </div>
