@@ -33,17 +33,18 @@ router.post('/complete', (req, res) => {
     var email = {
         from: from,
         to: to,
-        subject: 'Link de Confirmação',
+        subject: 'Link de Confirmação - Luxury Rental Cars JP',
         text: form,
     }
     remetente.sendMail(email, function (err) {
+        alert("Ocorreu um erro em seu cadastro...");
         if (err) throw err
         else
             console.log("Email de confirmação enviado...")
     })
     res.redirect('/client');
-
-    alert("Confirme o seu email com o link enviado para " + myMail);
+    alert("O email " + myMail + "foi cadastrado com sucesso!")
+    // alert("Confirme o seu email com o link enviado para " + myMail);
 });
 
 router.post('/added', (req, res) => {

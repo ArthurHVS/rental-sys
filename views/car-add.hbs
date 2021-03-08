@@ -8,74 +8,84 @@
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-12">
+                    <div class="col w-100">
                         <div class="card-box">
                             <h4 class="header-title mt-0 mb-3">Adicionar {{car.model}}</h4>
-                            <form action="added" method="POST">
-                                <div class="row row-fluid">
-                                    <div class="form-group">
-                                        <input id="modelo" name="model" type="text" value="{{car.model}}" />
-                                        <label class="col-sm-2 col-form-label" for="modelo">Modelo</label>
+                            <div class="container">
+                                <form action="added" method="POST">
+                                    <input class="form-control" id="modelo" name="model" type="text"
+                                        value="{{car.model}}" />
+                                    <label for="modelo">Modelo</label>
+
+                                    <input class="form-control" id="marca" name="brand" type="text"
+                                        value="{{car.brand}}" />
+                                    <label for="marca">Marca</label>
+
+                                    <input class="form-control" id="valor" name="price" type="text"
+                                        value="{{car.offers.price}}" />
+                                    <label for="valor">Valor Diária</label>
+
+                                    <input class="form-control py-2" id="descricao" name="description" type="text"
+                                        value="{{car.description}}" />
+                                    <label for="descricao">Descrição</label>
+
+                                    <div class="form-check">
+                                        <input class="form-check-input" id="vitrine" name="featured" type="checkbox"
+                                            value="true" />
+                                        <label for="vitrine">1ª página</label>
                                     </div>
-
-                                    <div class="form-group">
-                                        <input id="marca" name="brand" type="text" value="{{car.brand}}" />
-                                        <label class="col-sm-2 col-form-label" for="marca">Marca</label>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" id="bandeira0" name="bandeira" type="checkbox"
+                                            value="luxo" />
+                                        <label class="form-check-label" for="bandeira0">Luxo</label>
                                     </div>
-                                </div>
-                                <div class="row row-fluid">
-                                    <div class="form-group">
-                                        <input id="marca" name="description" type="text" value="{{car.description}}" />
-                                        <label class="col-sm-2 col-form-label" for="marca">Descrição</label>
-
-                                        <div class="form-group">
-                                            <input id="vitrine" name="featured" type="checkbox" value="true" />
-                                            <label class="col-sm-2 col-form-label" for="vitrine">Primeira página</label>
-                                        </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" id="bandeira1" name="bandeira" type="checkbox"
+                                            value="sport" />
+                                        <label class="form-check-label" for="bandeira1">Esportivo</label>
                                     </div>
-                                </div>
-                                <div class="row row-fluid">
-                                    <div class="form-group">
-                                        <input id="bandeira0" name="bandeira" type="checkbox" value="luxo" />
-                                        <label for="bandeira0">Luxo</label>
-
-                                        <input id="bandeira1" name="bandeira" type="checkbox" value="sport" />
-                                        <label for="bandeira1">Esportivo</label>
-
-                                        <input id="bandeira2" name="bandeira" type="checkbox" value="familia" />
-                                        <label for="bandeira2">Família</label>
-
-                                        <input id="bandeira3" name="bandeira" type="checkbox" value="conversivel" />
-                                        <label for="bandeira3">Conversível</label>
-
-                                        <input id="bandeira4" name="bandeira" type="checkbox" value="suv" />
-                                        <label for="bandeira4">SUV</label>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" id="bandeira2" name="bandeira" type="checkbox" value="familia" />
+                                        <label class="form-check-label" for="bandeira2">Família</label>
                                     </div>
-                                </div>
-                                <div style="display:none;" class="form-group">
-                                    <input id="myName" name="name" type="text" value="{{car.name}}" />
-                                    <input id="myContext" name="@context" type="text" value="http://schema.org" />
-                                    <input id="myOffers" name="" type="text" value="{{car.offers}}" />
-                                    <input id="myAnycaId" name="@id" type="text" value="{{car.url}}" />
-                                    <input id="myUrl" name="url" type="text" value="{{car.url}}" />
-                                    <input id="myGeoType" name="@type" type="text" value="Place" />
-                                    <input id="myGeoObj" name="geo" type="text" value={{jsonMe car.geo}} />
-                                    <input id="myImage" name="image" type="text" value="{{car.image}}" />
-                                    <input id="myNum" name="id_num" type="text" value="{{car.id_num}}" />
-                                    {{#each car.auxImg}}
-                                    <input id="myImgs" name="auxImg" type="text" value="{{this}}" />
-                                    {{/each}}
-                                </div>
-                                <div class="form-group">
-                                    <input href="#" class="btn btn-success" value="Gravar no Banco" type="submit" />
-                                </div>
-                                <div class="form-group">
-                                    <img class="img-fluid" id="imagem" name="img" src="{{car.image}}" />
-                                </div>
-
-                            </form>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" id="bandeira3" name="bandeira" type="checkbox" value="conversivel" />
+                                        <label class="form-check-label" for="bandeira3">Conversível</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" id="bandeira4" name="bandeira" type="checkbox"
+                                            value="suv" />
+                                        <label class="form-check-label" for="bandeira4">SUV</label>
+                                    </div>
+                                     
+                                    <div style="display:none;" class="form-group">
+                                        <input id="myName" name="name" type="text" value="{{car.name}}" />
+                                        <input id="myContext" name="@context" type="text" value="http://schema.org" />
+                                        <input id="myOffers" name="" type="text" value="{{car.offers}}" />
+                                        <input id="myAnycaId" name="@id" type="text" value="{{car.url}}" />
+                                        <input id="myUrl" name="url" type="text" value="{{car.url}}" />
+                                        <input id="myGeoType" name="@type" type="text" value="Place" />
+                                        <input id="myGeoObj" name="geo" type="text" value={{jsonMe car.geo}} />
+                                        <input id="myImage" name="image" type="text" value="{{car.image}}" />
+                                        <input id="myNum" name="id_num" type="text" value="{{car.id_num}}" />
+                                        {{#each car.auxImg}}
+                                        <input id="myImgs" name="auxImg" type="text" value="{{this}}" />
+                                        {{/each}}
+                                    </div>
+                                    <div class="form-group">
+                                        <input href="#" class="btn btn-success" value="Gravar no Banco" type="submit" />
+                                    </div>
+                                    <div class="form-group">
+                                        <img class="img-fluid" id="imagem" name="img" src="{{car.image}}" />
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     </div>
                     {{> footer_admin}}
                 </div>
             </div>
+        </div>
+    </div>
+
+</div>

@@ -59,7 +59,7 @@ router.post('/added', (req, res) => {
         offers: {
             priceCurrency: "JPY",
             "@context": "http://schema.org",
-            price: "3500",
+            price: req.body.price,
             "@type": "Offer"
         },
         "@id": req.body.url,
