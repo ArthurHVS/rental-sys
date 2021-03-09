@@ -18,7 +18,7 @@ router.post('/flag-admin',(req,res)=>{
 })
 
 router.post('/adding', (req, res) => {
-    request(req.body.url, function (err, response, body) {
+    request("https://anyca.net/car/" + req.body.anyNum, function (err, response, body) {
         if (response) {
             if (response.statusCode == 200) {
                 // Com a resposta em formato DOM tree e auxílio do cheerio, recorta o dado da resposta.
@@ -88,7 +88,14 @@ router.post('/added', (req, res) => {
 router.get('/add-car', (req, res) => {
     var context = {
         pageName: 'Modificando o catálago',
-        picSrc: req.session.picSrc,
+        myself: {
+            logged: req.session.loggedIn,
+            myObj: req.session.name,
+            // name: doc.name,
+            // email: doc.email,
+            myProfPic: req.session.picSrc
+        }
+        // picSrc: req.session.picSrc,
     }
     res.render('admin-cat', { layout: 'admin-layout', title: 'Adicione um anúncio', context: context })
 });
