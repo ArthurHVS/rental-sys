@@ -1,7 +1,7 @@
-function popup(car, brand, slug) {
-
+function popup(myself, car, brand, slug) {
+    console.log('...');
     Swal.fire({
-        title: 'Reserve o ' + car.charAt(0).toUpperCase() + car.slice(1),
+        title: 'Olá ' + myself.name + '... Reserve o ' + car.charAt(0).toUpperCase() + car.slice(1),
         html: `<input type="text" id="sweetName" class="swal2-input" placeholder="Nome Completo">
         <input id="sweetDays" class="swal2-input" placeholder="Quantos dias de reserva?">
         <input id="sweetPhone" class="swal2-input" placeholder="Telefone para Contato">`,

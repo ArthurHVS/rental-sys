@@ -1,19 +1,13 @@
-serviço de cadastro (único): 7500 yenes
-seguro (/dia): 2100 yens () / 2600 yens () <- Suporte Anyca
-contrato(pgto unico): 100 yenes
-taxa de serviço(/vez): 2900 yens
-taxa de serviço(/ilimitado): 2900 yens
+Comandos Utilizados
+    ssh user@143.198.28.191 --> Acesso SSH
+    mongodump --db="db-name" --> Fazer backup do banco
+    mongorestore --drop --> Restaurar backup do banco (sobrescrevendo)
+
+    
+Documentos necessário (frente/verso):
+    habilitação (up)
+    cartão de residência (zairyu card) (up)
 
 
-documentos necessário (frente/verso):
-nome, idade, endereço
-habilitação (up)
-cartão de residência (zairyu card) (up)
-
-
-cartão de crédito/debito no próprio nome (caso n tenha, entrar em contato, transferwise)
-Aluguel por hora -> Desde que faça o 1º aluguel
-
-Faixa com 4 botoes (luxo, esportivo, conversivel, suv, familia[stationwagon, 8 lugares]) na pag principal antes dos carros
-
-voltar 3/linha
+Cartão de crédito/debito no próprio nome (caso n tenha, entrar em contato, transferwise)
+    Aluguel por hora -> Desde que faça o 1º aluguel

@@ -36,15 +36,15 @@ router.post('/complete', (req, res) => {
         subject: 'Link de Confirmação - Luxury Rental Cars JP',
         text: form,
     }
-    remetente.sendMail(email, function (err) {
+    remetente.sendMail(email, function(err) {
         alert("Ocorreu um erro em seu cadastro...");
-        if (err) throw err
-        else
-            console.log("Email de confirmação enviado...")
+        if (err) {
+            res.sendStatus(500);
+            return;
+        }
     })
     res.redirect('/client');
     alert("O email " + myMail + "foi cadastrado com sucesso!")
-    // alert("Confirme o seu email com o link enviado para " + myMail);
 });
 
 router.post('/added', (req, res) => {
@@ -67,13 +67,12 @@ router.post('/added', (req, res) => {
     myBody.email.address = req.body.email
     myBody.email.verified = false;
     myBody.email.newsletter = mybool;
-    bcrypt.hash(req.body.pass, 12, function (err, hash) {
+    bcrypt.hash(req.body.pass, 12, function(err, hash) {
         myBody.hash = hash;
-        MongoClient.connect(process.env.MONGO_URL, { useNewUrlParser: true }, function (err, client) {
+        MongoClient.connect(process.env.MONGO_URL, { useNewUrlParser: true }, function(err, client) {
             const db = client.db('admin');
             const userCol = db.collection('users');
-            userCol.insertOne(myBody, function (err, doc) {
-                // console.log(doc.insertedId);
+            userCol.insertOne(myBody, function(err, doc) {
                 req.session.name = doc.insertedId;
                 res.redirect(307, '/register/complete');
             });
@@ -84,20 +83,19 @@ router.post('/added', (req, res) => {
 router.post('/add', (req, res) => {
     if (!req.body.completeName || !req.body.whatsapp || !req.body.email || !req.body.pass || !req.body.pass_conf || !req.body.age) {
         alert("Por favor, complete todos os campos...");
-    }
-    else {
-        MongoClient.connect(process.env.MONGO_URL, { useNewUrlParser: true }, function (err, client) {
+    } else {
+        MongoClient.connect(process.env.MONGO_URL, { useNewUrlParser: true }, function(err, client) {
             const db = client.db('admin');
             const userCol = db.collection('users');
-            userCol.findOne({ "email.address": req.body.email }, function (err, doc) {
+            userCol.findOne({ "email.address": req.body.email }, function(err, doc) {
                 if (err) {
-                    throw err;
+                    res.sendStatus(500);
+                    return;
                 }
                 if (doc) {
                     alert("Esse email já está cadastrado!");
                     res.redirect('/login');
-                }
-                else {
+                } else {
                     res.redirect(307, '/register/added')
                 }
             })

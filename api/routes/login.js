@@ -13,18 +13,20 @@ router.get('/', (req, res) => {
 });
 
 router.post('/attempt', (req, res) => {
-    MongoClient.connect(process.env.MONGO_URL, { useNewUrlParser: true }, function (err, client) {
+    MongoClient.connect(process.env.MONGO_URL, { useNewUrlParser: true }, function(err, client) {
         const db = client.db('admin');
 
         const usrCol = db.collection('users');
-        usrCol.findOne({ "email.address": req.body.email }, function (err, doc) {
+        usrCol.findOne({ "email.address": req.body.email }, function(err, doc) {
             if (err) {
-                throw err;
+                res.sendStatus(500);
+                return;
             }
             if (doc) {
-                bcrypt.compare(req.body.password, doc.hash, function (err, result) {
+                bcrypt.compare(req.body.password, doc.hash, function(err, result) {
                     if (err) {
-                        throw err;
+                        res.sendStatus(500);
+                        return;
                     }
                     if (result) {
                         req.session.loggedIn = true;
@@ -33,23 +35,19 @@ router.post('/attempt', (req, res) => {
                         if (doc.admin == true) {
                             req.session.adm_flag = true;
                             res.redirect('/admin/' + doc._id);
-                        }
-                        else {
+                        } else {
                             req.session.adm_flag = false;
                             res.redirect('/client/')
                         }
                         return true;
-                    }
-                    else {
+                    } else {
                         alert("Sua senha não está correta...");
-                        res.redirect('/');
-                        return false;
+                        res.redirect('/login');
                     }
                 });
-            }
-            else {
+            } else {
                 alert("Seu email não existe no nosso banco de dados...");
-                return false;
+                res.redirect('/login');
             }
         });
         client.close();

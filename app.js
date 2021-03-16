@@ -35,8 +35,9 @@ app.use(session({
     secret: 'shhh',
     name: 'uniqueSessionID',
     email: 'shh@shh.shh.sh',
-    saveUninitialized: false,
-    cookie: {}
+    saveUninitialized: true,
+    geo: {},
+    cookie: { secure: true }
 }))
 
 // Handlebars Engine
@@ -67,12 +68,20 @@ app.get('*/home', (req, res) => {
 app.get('/', (req, res) => {
     res.redirect('/client');
 });
-
+app.get('/locate/*', (req, res) => {
+    console.log("Aiai")
+    myGeo = GeoJSON.parse({
+        latitude: req.params.lat,
+        longitude: req.params.lng,
+    }, { Point: ['latitude', 'longitude'] })
+    req.session.geo = myGeo;
+    res.sendStatus(200);
+});
 app.get('/car/:slug/:id', (req, res) => {
-    MongoClient.connect(process.env.MONGO_URL, { useNewUrlParser: true }, function (err, client) {
+    MongoClient.connect(process.env.MONGO_URL, { useNewUrlParser: true }, function(err, client) {
         const db = client.db('autoloc');
-        const rel = db.collection('car-pool').findOne({ id_num: req.params.id }, function (err, doc) {
-            res.render('car-detail', { carro: doc, title: 'Luxury Rental - ' + doc.model, layout: 'detail-layout' })
+        const rel = db.collection('car-pool').findOne({ id_num: req.params.id }, function(err, doc) {
+            res.render('car-detail', { carro: doc, title: 'Luxury Rental - ' + doc.model, layout: 'detail-layout', myself: req.session })
         });
     });
 });

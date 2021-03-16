@@ -3,7 +3,7 @@ var request = require('request');
 var cheerio = require('cheerio');
 const slug = require('slug');
 var extend = require('node.extend');
-
+var GeoJSON = require('geojson');
 var multer = require('multer');
 var upload = multer();
 
@@ -11,21 +11,19 @@ const MongoClient = require('mongodb').MongoClient;
 const ObjectID = require('mongodb').ObjectID;
 const router = express.Router();
 
-router.post('/flag-admin',(req,res)=>{
-    
+router.post('/flag-admin', (req, res) => {
     res.render('flag-add', { layout: 'admin-layout', car: [] });
-
 })
 
 router.post('/adding', (req, res) => {
-    request("https://anyca.net/car/" + req.body.anyNum, function (err, response, body) {
+    request("https://anyca.net/car/" + req.body.anyNum, function(err, response, body) {
         if (response) {
             if (response.statusCode == 200) {
                 // Com a resposta em formato DOM tree e auxílio do cheerio, recorta o dado da resposta.
                 const $ = cheerio.load(body);
                 const raw_res = $('[type="application/ld+json"]').html();
                 const list_img = [];
-                $("ul.car_detail_hero > li > img").each(function (i, elem) {
+                $("ul.car_detail_hero > li > img").each(function(i, elem) {
                     list_img.push(elem.attribs.src);
                 });
                 result = JSON.parse(raw_res);
@@ -65,7 +63,7 @@ router.post('/added', (req, res) => {
         "@id": req.body.url,
         url: req.body.url,
         "@type": "Place",
-        geo: JSON.parse(req.body.geo),
+        geo: GeoJSON.parse(JSON.parse(req.body.geo), { Point: ["latitude", "longitude"] }),
         address: req.body.address,
         slug: mySlug,
         auxImg: req.body.auxImg,
@@ -75,12 +73,12 @@ router.post('/added', (req, res) => {
         featured: mybool
     }
 
-    MongoClient.connect(process.env.MONGO_URL, { useNewUrlParser: true }, function (err, client) {
+    MongoClient.connect(process.env.MONGO_URL, { useNewUrlParser: true }, function(err, client) {
         const db = client.db('autoloc');
         const mainCol = db.collection('car-pool');
         const update = { $set: bdObj }
-        mainCol.updateOne({ url: bdObj.url }, update, { upsert: true }, function () {
-            res.redirect('/admin');
+        mainCol.updateOne({ url: bdObj.url }, update, { upsert: true }, function() {
+            res.redirect('/admin/add-car');
         })
     })
 });
@@ -91,11 +89,8 @@ router.get('/add-car', (req, res) => {
         myself: {
             logged: req.session.loggedIn,
             myObj: req.session.name,
-            // name: doc.name,
-            // email: doc.email,
             myProfPic: req.session.picSrc
         }
-        // picSrc: req.session.picSrc,
     }
     res.render('admin-cat', { layout: 'admin-layout', title: 'Adicione um anúncio', context: context })
 });
@@ -111,28 +106,28 @@ router.get('/:mdb/fila', (req, res) => {
         filaZero: [],
         myself: []
     }
-    MongoClient.connect(process.env.MONGO_URL, { useNewUrlParser: true }, function (err, client) {
+    MongoClient.connect(process.env.MONGO_URL, { useNewUrlParser: true }, function(err, client) {
         const db = client.db('admin');
         const mainCol = db.collection('users');
         const filaZero = db.collection('fila-zero');
         const filaAnyca = db.collection('fila-anyca');
         const handshakes = db.collection('handshakes');
-        const filaZ = filaZero.find({}, function (err, doc) {
+        const filaZ = filaZero.find({}, function(err, doc) {
             doc.forEach(element => {
                 context.filaZero.push(element);
             });
         })
-        const filaA = filaAnyca.find({}, function (err, doc) {
+        const filaA = filaAnyca.find({}, function(err, doc) {
             doc.forEach(element => {
                 context.filaAnyca.push(element);
             })
         })
-        const handy = handshakes.find({}, function (err, doc) {
+        const handy = handshakes.find({}, function(err, doc) {
             doc.forEach(element => {
                 context.handshakes.push(element);
             })
         })
-        const main = mainCol.findOne({ _id: ObjectID(req.params.mdb) }, function (err, doc) {
+        const main = mainCol.findOne({ _id: ObjectID(req.params.mdb) }, function(err, doc) {
             if (doc) {
                 context.myself = {
                     logged: req.session.loggedIn,
@@ -158,7 +153,7 @@ router.get('/:mdb', (req, res) => {
             myTeam: [],
             myself: []
         }
-        MongoClient.connect(process.env.MONGO_URL, { useNewUrlParser: true }, function (err, client) {
+        MongoClient.connect(process.env.MONGO_URL, { useNewUrlParser: true }, function(err, client) {
             const db = client.db('admin');
 
             const mainCol = db.collection('users');
@@ -170,32 +165,32 @@ router.get('/:mdb', (req, res) => {
             const dbCars = client.db('autoloc');
 
             const carCol = dbCars.collection('car-pool');
-            const cars = carCol.find({}, function (err, doc) {
+            const cars = carCol.find({}, function(err, doc) {
                 doc.forEach(element => {
                     context.carCatalog.push(element);
                 })
             })
-            const filaZ = filaZero.find({}, function (err, doc) {
+            const filaZ = filaZero.find({}, function(err, doc) {
                 doc.forEach(element => {
                     context.filaZero.push(element);
                 });
             })
-            const filaA = filaAnyca.find({}, function (err, doc) {
+            const filaA = filaAnyca.find({}, function(err, doc) {
                 doc.forEach(element => {
                     context.filaAnyca.push(element);
                 })
             })
-            const handy = handshakes.find({}, function (err, doc) {
+            const handy = handshakes.find({}, function(err, doc) {
                 doc.forEach(element => {
                     context.handshakes.push(element);
                 })
             })
-            const equipe = teamCol.find({}, function (err, doc) {
+            const equipe = teamCol.find({}, function(err, doc) {
                 doc.forEach(element => {
                     context.myTeam.push(element);
                 })
             })
-            const main = mainCol.findOne({ _id: ObjectID(req.params.mdb) }, function (err, doc) {
+            const main = mainCol.findOne({ _id: ObjectID(req.params.mdb) }, function(err, doc) {
                 if (doc) {
                     req.session.name = doc._id;
                     req.session.email = doc.email;
@@ -214,14 +209,13 @@ router.get('/:mdb', (req, res) => {
 });
 
 router.get('/', (req, res) => {
-    if (!req.session.adm_flag){
+    if (!req.session.adm_flag) {
         if (req.session)
             res.redirect('/client/');
-        else    
+        else
             res.redirect('/login');
-    }
-    else {
-        res.redirect('/admin/'+req.session.name);
+    } else {
+        res.redirect('/admin/' + req.session.name);
     }
 });
 

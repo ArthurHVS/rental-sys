@@ -1,36 +1,39 @@
-.carousel-text{
+.carousel-text {
     font-size: xx-large;
 }
-.logo-button{
-    font-family: 'Montserrat','sans-serif';
+
+.logo-button {
+    font-family: 'Montserrat', 'sans-serif';
     letter-spacing: 4px;
 }
+
 .mypattern {
     background-image: url('/images/bghead.webp');
     background-size: cover;
 }
-.pagination > li > a {
+
+.pagination>li>a {
     background-color: rgb(99, 96, 96);
     color: #ece7f5;
     transition: background-color .8s;
 }
 
-.pagination > li > a:focus,
-.pagination > li > a:hover,
-.pagination > li > span:focus,
-.pagination > li > span:hover {
+.pagination>li>a:focus,
+.pagination>li>a:hover,
+.pagination>li>span:focus,
+.pagination>li>span:hover {
     color: #5a5a5a;
     background-color: #eee;
     border-color: #ddd;
 }
 
-.pagination > .active > a {
+.pagination>.active>a {
     color: white;
     background-color: #ece7f5 !important;
     border: solid 1px #ece7f5 !important;
 }
 
-.pagination > .active > a:hover {
+.pagination>.active>a:hover {
     background-color: #ece7f5 !important;
     border: solid 1px #ece7f5;
 }
