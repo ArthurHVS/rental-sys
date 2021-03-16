@@ -43,18 +43,16 @@ router.get('/locate/:lat/:lng', (req, res) => {
 router.get('/near-me/', (req, res) => {
     var carros = [];
     if (req.session.geo) {
-        // console.log(req.session.geo.geometry)
         MongoClient.connect(process.env.MONGO_URL, { useNewUrlParser: true },
             function(err, client) {
                 const db = client.db('autoloc');
                 const nearCol = db.collection('car-pool');
-                // console.log(req.session)
                 const nearAgg = nearCol.find({
                     "geo.geometry": {
                         $nearSphere: {
                             $geometry: req.session.geo.geometry,
                             $minDistance: 0,
-                            $maxDistance: 130000
+                            $maxDistance: 80000
                         }
                     }
                 })
@@ -77,7 +75,7 @@ router.get('/near-me/', (req, res) => {
                                 coordinates: [139.6007812, 35.6684415] //lng,lat Tokyo
                             },
                             $minDistance: 0,
-                            $maxDistance: 130000
+                            $maxDistance: 160000
                         }
                     }
                 })

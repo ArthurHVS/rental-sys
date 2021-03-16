@@ -1,9 +1,6 @@
 function locateMe(position) {
     var latitude = position.coords.latitude;
     var longitude = position.coords.longitude;
-    var altitude = position.coords.altitude;
-    var accuracy = position.coords.accuracy;
-    var vector = [latitude, longitude, altitude, accuracy];
     var xmlhttp = new XMLHttpRequest();
 
     xmlhttp.onreadystatechange = function() {
