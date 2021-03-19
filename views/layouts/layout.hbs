@@ -10,16 +10,11 @@
   <link href="/css/bootstrap/css/bootstrap-grid.css" rel="stylesheet" type="text/css">
   <link href="/css/bootstrap/css/bootstrap-utilities.css" rel="stylesheet" type="text/css">
   <link href="/css/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
-
-
-  {{!--
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.5.0/css/ol.css"
-    type="text/css">
-  <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.5.0/build/ol.js"></script> --}}
-
-
   <link href="/css/custom.css" rel="stylesheet" type="text/css">
 
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.5.0/css/ol.css"
+    type="text/css">
+  <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.5.0/build/ol.js"></script>
 
   <link href="/css/asas-framework.webflow.css" rel="stylesheet" type="text/css">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" rel="stylesheet"
@@ -30,19 +25,21 @@
   <script
     type="application/javascript">WebFont.load({ google: { families: ["Montserrat:100,100italic,200,200italic,300,300italic,400,400italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic", "Gothic A1:100,200,300,regular,500,600,700,800,900"] } });</script>
   <script src="/js/getGeo.js" type="application/javascript"></script>
+  <script src="/js/renderFilter.js" type="application/javascript"></script>
   <script src="/js/jquery.min.js" type="application/javascript"></script>
-  <script type="application/javascript">$('#elem').show()</script>
-
+  
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
   <script src="/js/myswal.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.js"></script>
+  
 </head>
-{{!-- style="background-image: url('../images/bghead.jpg');" --}}
 
 <body style="overflow-x: hidden" class="bg-dark justify-content-center m-auto">
+  
   {{{ body }}}
 
   <script src="/js/webflow.js" type="application/javascript"></script>
+  
 </body>
 
 </html>

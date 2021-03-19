@@ -52,6 +52,8 @@ router.post('/added', (req, res) => {
         name: req.body.name,
         brand: req.body.brand,
         description: req.body.description,
+        city: req.body.city,
+        state: req.body.state,
         image: req.body.image,
         "@context": "http://schema.org",
         offers: {

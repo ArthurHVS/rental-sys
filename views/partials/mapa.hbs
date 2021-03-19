@@ -1,42 +1,28 @@
 <div style="width: 60%; height: 400px;" id="map" class="map m-auto"></div>
 <script type="text/javascript">
-    var mapId = "map"
+    var mapId = "map";
+    var coord = [{{ carro.geo.geometry.coordinates }}]
     function createMap() {
-        var coordinate = [{{ carro.geo.geometry.coordinates }}];
+        var coordinate = coord;
         var vectorSource = new ol.source.Vector({});
         var vectorLayer = new ol.layer.Vector({ source: vectorSource });
         var view = new ol.View({
-        center: ol.proj.fromLonLat([{{ carro.geo.geometry.coordinates }}]),
-        zoom: 12,
-        maxZoom: 19,
-        minZoom: 5
-        });
-        var map = new ol.Map({
-        layers: [new ol.layer.Tile({ source: new ol.source.OSM({ key: 'myKey', crossOrigin: '' }) }), vectorLayer,],
+            center: ol.proj.fromLonLat([{{ carro.geo.geometry.coordinates }}]),
+            zoom: 12,
+            maxZoom: 19,
+            minZoom: 5
+    });
+    var map = new ol.Map({
+        layers: [
+            new ol.layer.Tile({ source: new ol.source.OSM({ key: 'myKey', crossOrigin: '' }) }), 
+            vectorLayer, 
+            new ol.layer.Vector({source: })],
         target: 'map',
         controls: ol.control.defaults(),
         view: view
-    });
-        var iconStyle = new ol.style.Style({
-        image: new ol.style.Icon({
-            anchor: [12, 37],
-            anchorXUnits: 'pixels', //'fraction'
-            anchorYUnits: 'pixels',
-            opacity: 0.8,
-            src: 'http://www.geocodezip.com/mapIcons/marker_red.png'
-        })
     })
 
-        var marker;
-        this.setMarker = function () {
-        marker = new ol.Feature(
-            new ol.geom.Point(ol.proj.fromLonLat({{ carro.geo.geometry.coordinates }}))
-        );
-        marker.setStyle(iconStyle);
-        vectorSource.addFeature(marker);
-    }
-
-        return this;
+    return this;
     }
     var map = createMap();
 </script>

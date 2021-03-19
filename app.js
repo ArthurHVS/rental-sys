@@ -81,7 +81,7 @@ app.get('/car/:slug/:id', (req, res) => {
     MongoClient.connect(process.env.MONGO_URL, { useNewUrlParser: true }, function(err, client) {
         const db = client.db('autoloc');
         const rel = db.collection('car-pool').findOne({ id_num: req.params.id }, function(err, doc) {
-            res.render('car-detail', { carro: doc, title: 'Luxury Rental - ' + doc.model, layout: 'detail-layout', myself: req.session })
+            res.render('car-detail', { carro: doc, title: 'Luxury Rental - ' + doc.model, myself: req.session })
         });
     });
 });

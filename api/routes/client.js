@@ -9,28 +9,6 @@ router.get('*/home', (req, res) => {
     res.redirect('/');
 });
 
-router.post('/search', (req, res) => {
-    var carros = [];
-    const termo = req.body.termo.toUpperCase();
-    MongoClient.connect(process.env.MONGO_URL, { useNewUrlParser: true }, function(err, client) {
-        const db = client.db('autoloc');
-        const catCol = db.collection('car-pool');
-        catCol.find({
-            $or: [
-                { "brand": { "$in": [req.body.params, termo] } },
-                { "model": { "$in": [req.body.params, termo] } }
-            ]
-        }, function(err, doc) {
-            doc.forEach(car => {
-                carros.push(car);
-            }, function() {
-                res.render('catalog', { catalog: carros, call: "Busca:" + " '" + req.body.termo.toUpperCase() + "'", title: 'Luxury Cars Rental - Busca' })
-            })
-        })
-    })
-
-});
-
 router.get('/locate/:lat/:lng', (req, res) => {
     myGeo = GeoJSON.parse({
         latitude: req.params.lat,
@@ -40,53 +18,20 @@ router.get('/locate/:lat/:lng', (req, res) => {
     res.sendStatus(200);
 });
 
-router.get('/near-me/', (req, res) => {
-    var carros = [];
-    if (req.session.geo) {
-        MongoClient.connect(process.env.MONGO_URL, { useNewUrlParser: true },
-            function(err, client) {
-                const db = client.db('autoloc');
-                const nearCol = db.collection('car-pool');
-                const nearAgg = nearCol.find({
-                    "geo.geometry": {
-                        $nearSphere: {
-                            $geometry: req.session.geo.geometry,
-                            $minDistance: 0,
-                            $maxDistance: 80000
-                        }
-                    }
-                })
-                nearAgg.forEach(car => {
-                    carros.push(car)
-                }, function() {
-                    res.render('catalog', { catalog: carros, call: 'Carros Próximos', title: 'Luxury Cars Rental - Catálogo Completo' })
-                })
-            })
-    } else {
-        MongoClient.connect(process.env.MONGO_URL, { useNewUrlParser: true },
-            function(err, client) {
-                const db = client.db('autoloc');
-                const nearCol = db.collection('car-pool');
-                const nearAgg = nearCol.find({
-                    "geo.geometry": {
-                        $nearSphere: {
-                            $geometry: {
-                                type: "Point",
-                                coordinates: [139.6007812, 35.6684415] //lng,lat Tokyo
-                            },
-                            $minDistance: 0,
-                            $maxDistance: 160000
-                        }
-                    }
-                })
-                nearAgg.forEach(car => {
-                    carros.push(car)
-                }, function() {
-                    res.render('catalog', { catalog: carros, call: 'Catálogo Completo', title: 'Luxury Cars Rental - Catálogo Completo' })
-                })
-            })
-    }
+router.get('/filters', (req, res) => {
+    res.render('filters', { catalog: {}, title: 'Luxury Cars Rental - Busca Avançada' })
 });
+
+router.get('/filtering', (req, res) => {
+    var carros = [];
+    MongoClient.connect(process.env.MONGO_URL, { useNewUrlParser: true }, function(err, client) {
+        const db = client.db('autoloc');
+        const filterCol = db.collection('car-pool');
+        const filterAgg = filterCol.aggregate([{}])
+        filterAgg.forEach
+    })
+    res.render('filters', { catalog: carros, title: 'Luxury Cars Rental - Busca Avançada' })
+})
 
 router.get('/catalogo', (req, res) => {
     var carros = [];
@@ -171,6 +116,76 @@ router.post('/handshake', (req, res) => {
         }
     })
 })
+
+router.get('/near-me/', (req, res) => {
+    var carros = [];
+    if (req.session.geo) {
+        MongoClient.connect(process.env.MONGO_URL, { useNewUrlParser: true },
+            function(err, client) {
+                const db = client.db('autoloc');
+                const nearCol = db.collection('car-pool');
+                const nearAgg = nearCol.find({
+                    "geo.geometry": {
+                        $nearSphere: {
+                            $geometry: req.session.geo.geometry,
+                            $minDistance: 0,
+                            $maxDistance: 80000
+                        }
+                    }
+                })
+                nearAgg.forEach(car => {
+                    carros.push(car)
+                }, function() {
+                    res.render('catalog', { catalog: carros, call: 'Carros Próximos', title: 'Luxury Cars Rental - Catálogo Completo' })
+                })
+            })
+    } else {
+        MongoClient.connect(process.env.MONGO_URL, { useNewUrlParser: true },
+            function(err, client) {
+                const db = client.db('autoloc');
+                const nearCol = db.collection('car-pool');
+                const nearAgg = nearCol.find({
+                    "geo.geometry": {
+                        $nearSphere: {
+                            $geometry: {
+                                type: "Point",
+                                coordinates: [139.6007812, 35.6684415] //lng,lat Tokyo
+                            },
+                            $minDistance: 0,
+                            $maxDistance: 160000
+                        }
+                    }
+                })
+                nearAgg.forEach(car => {
+                    carros.push(car)
+                }, function() {
+                    res.render('catalog', { catalog: carros, call: 'Catálogo Completo', title: 'Luxury Cars Rental - Catálogo Completo' })
+                })
+            })
+    }
+});
+
+router.post('/search', (req, res) => {
+    var carros = [];
+    const termo = req.body.termo.toUpperCase();
+    MongoClient.connect(process.env.MONGO_URL, { useNewUrlParser: true }, function(err, client) {
+        const db = client.db('autoloc');
+        const catCol = db.collection('car-pool');
+        catCol.find({
+            $or: [
+                { "brand": { "$in": [req.body.params, termo] } },
+                { "model": { "$in": [req.body.params, termo] } }
+            ]
+        }, function(err, doc) {
+            doc.forEach(car => {
+                carros.push(car);
+            }, function() {
+                res.render('catalog', { catalog: carros, call: "Busca:" + " '" + req.body.termo.toUpperCase() + "'", title: 'Luxury Cars Rental - Busca' })
+            })
+        })
+    })
+
+});
 
 router.post('/', (req, res) => {});
 
