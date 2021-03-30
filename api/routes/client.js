@@ -187,6 +187,27 @@ router.post('/search', (req, res) => {
 
 });
 
+router.post('/filter', (req, res) => {
+    var carros = [];
+    const brand = req.body.brand;
+    const city = req.body.city;
+    const our_cat = req.body.our_cat;
+    console.log(brand + ", " + city + ", " + our_cat + "...")
+    MongoClient.connect(process.env.MONGO_URL, { useNewUrlParser: true }, function(err, client) {
+        const db = client.db('autoloc');
+        const catCol = db.collection('car-pool');
+        catCol.find({ $and: [{ "city": city }, { "brand": brand }, { "our_cat": our_cat }] }, function(err, doc) {
+            doc.forEach(car => {
+                // console.log("Carro: " + doc.model)
+                carros.push(car);
+            }, function() {
+                res.render('catalog', { catalog: carros, call: "Busca Avançada", title: 'Luxury Cars Rental - Busca Avançada' })
+            })
+        })
+    })
+
+});
+
 router.post('/', (req, res) => {});
 
 module.exports = router;

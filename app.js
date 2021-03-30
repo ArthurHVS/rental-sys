@@ -3,6 +3,9 @@ const express = require('express');
 const helmet = require('helmet');
 const bodyParser = require('body-parser');
 const MongoClient = require('mongodb').MongoClient;
+const cron = require('node-cron');
+var request = require('request');
+var cheerio = require('cheerio');
 
 const hbs = require('express-handlebars');
 const path = require('path');
@@ -30,6 +33,47 @@ const clientRoutes = require('./api/routes/client');
 const adminRoutes = require('./api/routes/admin')
 const loginRoutes = require('./api/routes/login');
 const registerRoutes = require('./api/routes/register');
+
+cron.schedule("0 0 * * 3", function() {
+    console.log("Quarta-feira é dia de atualizar...");
+    MongoClient.connect(process.env.MONGO_URL, { useNewUrlParser: true }, function(err, client) {
+        var carros = [];
+        const db = client.db('autoloc');
+        const catCol = db.collection('car-pool');
+        const catAgg = catCol.aggregate([{ $sort: { featured: -1 } }])
+        catAgg.forEach(car => {
+            request(car.url, function(err, response, body) {
+                client.close();
+                if (err) { throw err; }
+                if (response) {
+                    if (response.statusCode == 200) {
+                        // Com a resposta em formato DOM tree e auxílio do cheerio, recorta o dado da resposta.
+                        const $ = cheerio.load(body);
+                        const raw_res = $('[type="application/ld+json"]').html();
+                        result = JSON.parse(raw_res);
+                        result.shift();
+                        car.offers = {
+                            priceCurrency: "JPY",
+                            '@context': "http://schema.org",
+                            price: result[0].offers.price,
+                            '@type': "Offer"
+                        };
+                        carros.push(car);
+                        MongoClient.connect(process.env.MONGO_URL, function(err, client) {
+                                const db = client.db('autoloc');
+                                const collection = db.collection('car-pool');
+                                collection.findOneAndUpdate({ url: car.url }, { $set: car }, function(err, doc) {
+                                    console.log("Atualizou: " + doc.value.brand + " " + doc.value.model);
+                                    console.log("Preço Atualizado: " + doc.value.offers.price);
+                                })
+                            })
+                            // console.log(car.name + ", " + car.offers.price)
+                    }
+                }
+            })
+        })
+    })
+})
 
 app.use(session({
     secret: 'shhh',

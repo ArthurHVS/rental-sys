@@ -21,7 +21,6 @@ app.get('/atualizar', (req, res) => {
             car.geo = myGeo;
             carros.push(car);
         }, function() {
-            // console.log("Processo de atualização vai começar...")
             carros.forEach(car => {
                 const update = { $set: car }
                 carCol.updateOne({ url: car.url }, update, { upsert: true }, function() {
