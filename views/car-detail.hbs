@@ -15,13 +15,13 @@
                 </nav>
             </div>
             <div class="">
-                <div class="float-left px-4"><img width="60" src="/images/svg/{{carro.brand}}.svg"></img></div>
+                <div class="float-left px-4"><img alt="" width="60" src="/images/svg/{{carro.brand}}.svg"></img></div>
                 <div class="float-left text-white">
                     <h1>{{strCut carro.brand carro.model}}</h1>
                 </div>
                 <div class="container">
                     <a data-w-id="46644e54-5805-3216-447a-8c379a18a0d0" href="#"
-                        class="float-right button-primary lg-md-sm-margin-right xs-margin-bottom w-inline-block"
+                        class="float-right button-primary lg-md-sm-margin-right w-inline-block"
                         onclick="popup('{{myself}}','{{carro.model}}','{{carro.brand}}','{{carro.slug}}')">
                         <div class="button-primary-text">Alugue agora!</div>
                         <div style="opacity:0;display:block;-webkit-transform:translate3d(0, 20PX, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 20PX, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 20PX, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 20PX, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)"
@@ -37,7 +37,7 @@
 </div>
 <div class="section is-dark">
     <div class="col col-10 container container-fluid">
-        <div data-animation="slide" data-duration="500" data-infinite="1" class="margin-bottom size w-slider">
+        <div data-animation="slide" data-duration="500" data-infinite="1" class="my-5 detail-slider w-slider">
             <div class="w-slider-mask">
                 {{#unless carro.auxImg}}
                 <div class="slide add-bg1 w-slide" style="background-image: url('{{ carro.image }}');"></div>
@@ -54,29 +54,29 @@
             </div>
             <div class="w-slider-nav w-round"></div>
         </div>
-        <h2 class="size-h2 size-h2-xs margin-bottom">{{carro.brand}} {{carro.model}}</h2>
+        <h2 class="mb-5">{{carro.brand}} {{carro.model}}</h2>
         <div class="col col-4">
-            <div class="text-small low-text-contrast margin-bottom-small">Preço da diária</div>
-            <div class="is-bold size-h3">¥{{carro.offers.price}}</div>
+            <div class="text-small low-text-contrast mb-3">Preço da diária</div>
+            <h3>¥{{carro.offers.price}}</h3>
         </div>
         <div class="col col-12">
             <div data-duration-in="300" data-duration-out="100" class="c-tab2 w-tabs">
                 <div class="c-tab2__menu flexh-justify-start w-tab-menu">
-                    <a data-w-tab="Tab 1" class="c-tab2__link is-white w-inline-block w-tab-link w--current">
+                    <a data-w-tab="Tab 1" class="c-tab2__link is-dark w-inline-block w-tab-link w--current">
                         <div>Informações Principais </div>
                     </a>
-                    <a data-w-tab="Tab 2" class="c-tab2__link is-white w-inline-block w-tab-link">
+                    <a data-w-tab="Tab 2" class="c-tab2__link is-dark w-inline-block w-tab-link">
                         <div>Observações</div>
                     </a>
-                    <a data-w-tab="Tab 3" class="c-tab2__link is-white w-inline-block w-tab-link">
+                    <a data-w-tab="Tab 3" class="c-tab2__link is-dark w-inline-block w-tab-link">
                         <div>Documentação Necessária</div>
                     </a>
                 </div>
                 <div class="c-tab2__content is-dark w-tab-content">
                     <div data-w-tab="Tab 1" class="w-tab-pane w--tab-active">
-                        <div class="col lg-12 no-padding-lr">
+                        <div class="col lg-12 px-0">
                             <div data-delay="0" class="c-accordion2 is-dark w-dropdown">
-                                <div class="c-accordion2__toggle is-white w-dropdown-toggle">
+                                <div class="c-accordion2__toggle is-dark w-dropdown-toggle">
                                     <div class="c-accordion__title"><strong>Taxas de serviço</strong></div>
                                     <div class="w-icon-dropdown-toggle"></div>
                                 </div>

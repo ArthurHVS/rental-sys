@@ -1,3 +1,114 @@
+/* Antigo asas webflow */
+
+body {
+    font-family: 'Gothic A1', sans-serif;
+    color: #333;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+h1 {
+    margin-top: 0px;
+    margin-bottom: 10px;
+    font-size: 52px;
+    line-height: 1.15;
+    font-weight: 900;
+}
+
+h2 {
+    margin-top: 0px;
+    margin-bottom: 10px;
+    font-size: 36px;
+    line-height: 1.25;
+    font-weight: 900;
+}
+
+h3 {
+    margin-top: 0px;
+    margin-bottom: 10px;
+    font-size: 23px;
+    line-height: 1.35;
+    font-weight: 900;
+}
+
+a {
+    color: #d7e0f7;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #686b74;
+    text-decoration: none;
+}
+
+img {
+    display: inline-block;
+    max-width: 100%;
+}
+
+.nav-link {
+    font-weight: 600;
+}
+
+.slider-row {
+    height: auto;
+    margin-right: 0px;
+    margin-left: 0px;
+    background-color: hsla(0, 0%, 100%, 0);
+}
+
+.text-white {
+    color: #fff;
+}
+
+.alignself-center {
+    -webkit-align-self: center;
+    -ms-flex-item-align: center;
+    -ms-grid-row-align: center;
+    align-self: center;
+}
+
+.fa-brand {
+    font-family: 'Fa brands 400', sans-serif;
+    text-align: center;
+}
+
+.text-align-center {
+    text-align: center;
+}
+
+.fa {
+    font-family: 'Fa solid 900', sans-serif;
+    font-size: 12px;
+}
+
+.flex-vertical {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: start;
+    -webkit-align-items: flex-start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+}
+
+.pre-title {
+    margin-bottom: 8px;
+    color: rgba(0, 0, 0, 0.51);
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.pre-title.on-dark {
+    color: hsla(0, 0%, 100%, 0.7);
+}
+
 .carousel-text {
     font-size: xx-large;
 }
@@ -12,28 +123,92 @@
     background-size: cover;
 }
 
-.pagination>li>a {
-    background-color: rgb(99, 96, 96);
-    color: #ece7f5;
-    transition: background-color .8s;
+.on-dark {
+    color: #fff;
 }
 
-.pagination>li>a:focus,
-.pagination>li>a:hover,
-.pagination>li>span:focus,
-.pagination>li>span:hover {
-    color: #5a5a5a;
-    background-color: #eee;
-    border-color: #ddd;
+.float-right {
+    float: right;
 }
 
-.pagination>.active>a {
-    color: white;
-    background-color: #ece7f5 !important;
-    border: solid 1px #ece7f5 !important;
+.float-left {
+    float: left;
 }
 
-.pagination>.active>a:hover {
-    background-color: #ece7f5 !important;
-    border: solid 1px #ece7f5;
+.is-dark {
+    background-color: #000;
+    color: #fff;
+}
+
+.is-white {
+    background-color: #fff;
+}
+
+.section {
+    padding-top: 96px;
+    padding-bottom: 48px;
+}
+
+.detail-slider {
+    height: 470px;
+}
+
+
+/* Botão */
+
+.button-primary {
+    display: inline-block;
+    min-width: 180px;
+    padding: 16px 40px;
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 auto;
+    -ms-flex: 0 auto;
+    flex: 0 auto;
+    border-radius: 40px;
+    background-color: #00103a;
+    font-family: Montserrat, sans-serif;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.button-primary-text {
+    display: block;
+    text-align: center;
+    letter-spacing: 0.1em;
+}
+
+.button-primary {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 100%;
+    -ms-flex: 0 100%;
+    flex: 0 100%;
+}
+
+
+/* Slides */
+
+.slide-with-bg {
+    background-color: #000;
+}
+
+.slide-with-bg.bg1 {
+    background-image: linear-gradient(256deg, rgba(10, 5, 24, 0.767), rgba(148, 169, 240, 0.808)), url('../../images/slidehead.webp');
+    background-position: 50% 50%;
+    background-size: cover;
+}
+
+.slide-with-bg.bg2 {
+    background-image: linear-gradient(256deg, rgba(10, 5, 24, 0.767), rgba(148, 169, 240, 0.808)), url('../../images/slidehead2.webp');
+    background-position: 50% 50%;
+    background-size: cover;
+}
+
+.slide-with-bg.bg3 {
+    background-image: linear-gradient(to left, rgba(255, 255, 255, 0.459), rgba(0, 0, 0, 0.692)), url('../../images/slidehead3.webp');
+    background-position: 50% 50%;
+    background-size: cover;
 }

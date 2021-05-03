@@ -1,11 +1,11 @@
 <div class="card w-100 text-light bg-secondary align-items-center py-0">
     <div class="card-header w-100 float-left">
-        <div class="float-left"><img width="32" src="/images/svg/{{this.brand}}.svg"></img></div>
+        <div class="float-left"><img alt="{{this.brand}}" width="32" src="/images/svg/{{this.brand}}.svg"></img></div>
         <div class="float-right">
-            <h4>{{strCut ' ' this.model}}</h4>
+            <p style="font-size:x-large">{{strCut ' ' this.model}}</p>
         </div>
     </div>
-    <img class="card-img-top" src={{this.image}} alt="" />
+    <img alt="Carro de Luxo para alugar" class="card-img-top" src={{this.image}} />
 
     <div class="card-body py-1">
         <a href="/car/{{this.slug}}" class="m-2 col col-12 btn btn-lg btn-dark">

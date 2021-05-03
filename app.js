@@ -92,6 +92,7 @@ app.use(express.static(path.join(__dirname, '/views/')));
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+    res.set('Cache-control', 'public, max-age=31536000')
     if (req.method === 'OPTIONS') {
         res.header('Access-Control-Allow-Methods', 'PUT, POST, PATCH, DELETE, GET');
         return res.status(200).json({});
@@ -113,7 +114,6 @@ app.get('/', (req, res) => {
     res.redirect('/client');
 });
 app.get('/locate/*', (req, res) => {
-    console.log("Aiai")
     myGeo = GeoJSON.parse({
         latitude: req.params.lat,
         longitude: req.params.lng,

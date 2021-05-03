@@ -6,19 +6,19 @@
         </h1>
     </div>
     <div class="d-inline-flex w-100 justify-content-between">
-        <div class="col col-4 text-center">
+        <div class="col col-4 text-center mb-5">
             <a href="/client/catalogo" class="button-primary m-auto">
                 <div class="button-primary-text">
                     C A T Á L O G O <br> C O M P L E T O<br><i class="fas fa-book-open fa-3x pt-2"></i>
                 </div>
             </a>
         </div>
-        <div class="col col-4 text-center">
+        <div class="col col-4 text-center mb-5">
             <a href="/client/filtering" class="button-primary m-auto ">
                 <div class="button-primary-text">B U S C A <br> A V A N Ç A D A <br> <i class="fab fa-searchengin fa-3x pt-2"></i></div>
             </a>
         </div>
-        <div class="col col-4 text-center">
+        <div class="col col-4 text-center mb-5">
             <a href="/client/near-me" class="button-primary m-auto ">
                 <div class="button-primary-text">C A R R O S <br> P E R T O <br> <i class="fas fa-search-location fa-3x pt-2"></i></div>
             </a>
@@ -31,45 +31,45 @@
         <div class="row">
             <div class="btn-group" role="group">
                 <a href="/client/categoria/luxo" class="btn btn-dark mx-1 my-4" value="deluxe">
-                    <img src="/images/svg/DELUXE.svg" width="75px"></img>
+                    <img alt="Carros de Luxo" src="/images/svg/DELUXE.svg" width="75px"></img>
                     <h2 class="logo-button">Luxo</h2>
                 </a>
                 <a href="/client/categoria/sport" class="btn btn-dark mx-1 my-4" value="sport">
-                    <img src="/images/svg/SPORT.svg" width="75px"></img>
+                    <img alt="Carros Esportivos" src="/images/svg/SPORT.svg" width="75px"></img>
                     <h2 class="logo-button">Esportivo</h2>
                 </a>
                 <a href="/client/categoria/familia" class="btn btn-dark mx-1 my-4" value="family">
-                    <img src="/images/svg/FAMILY.svg" width="75px"></img>
+                    <img alt="Carros para toda a Família" src="/images/svg/FAMILY.svg" width="75px"></img>
                     <h2 class="logo-button">Família</h2>
                 </a>
                 <a href="/client/categoria/suv" class="btn btn-dark mx-1 my-4" value="SUV">
-                    <img src="/images/svg/SUV.svg" width="75px"></img>
+                    <img alt="Carros SUV" src="/images/svg/SUV.svg" width="75px"></img>
                     <h2 class="logo-button">S.U.V</h2>
                 </a>
             </div>
         </div>
     </div>
 
-    <div class="section is-dark no-padding-top-bottom">
+    <div class="section is-dark py-0">
         <div data-animation="outin" data-easing="ease-in-out" data-duration="1000" data-infinite="1"
             class="slider-row w-slider">
             <div class="w-slider-mask">
-                <div class="slide-with-bg bg1 padding-top-bottom-double hide-bg w-slide">
-                    <div class="container padding-top-bottom-double">
-                        <div class="col lg-5 alignself-center md-8 sm-12">
+                <div class="slide-with-bg bg1 py-5 hide-bg w-slide">
+                    <div class="container py-5">
+                        <div class="col col-lg-5 col-md-8 col-sm-12 alignself-center mb-5">
                             <div class="pre-title on-dark">Luxury Rental</div>
-                            <h2 class="size-h2 size-h2-xs margin-bottom-small">O que nós fazemos?</h2>
-                            <div class="margin-bottom-2 carousel-text">Somos uma empresa do grupo UMK, focada em
+                            <h2 class="mb-3">O que nós fazemos?</h2>
+                            <div class="mb-5 carousel-text">Somos uma empresa do grupo UMK, focada em
                                 possibilitar o aluguel de carros de luxo sem complicações</div>
                         </div>
                     </div>
                 </div>
-                <div class="slide-with-bg bg2 padding-top-bottom-double hide-bg w-slide">
-                    <div class="container padding-top-bottom-double">
-                        <div class="col lg-5 alignself-center md-8 sm-12">
+                <div class="slide-with-bg bg2 py-2 hide-bg w-slide">
+                    <div class="container py-2">
+                        <div class="col col-lg-5 col-md-8 col-sm-12 alignself-center mb-5">
                             <div class="pre-title on-dark">Luxury Rental</div>
-                            <h2 class="size-h2 size-h2-xs margin-bottom-small">O nosso diferencial:</h2>
-                            <div class="margin-bottom-2 carousel-text">Cuidamos de todo o trâmite burocrático na
+                            <h2 class="mb-2">O nosso diferencial:</h2>
+                            <div class="mb-2 carousel-text">Cuidamos de todo o trâmite burocrático na
                                 plataforma Anyca. Assim, você não se preocupa com o seu cadastro, nem com a barreira
                                 linguística...</div>
                         </div>
@@ -88,7 +88,7 @@
     <div class="section is-dark">
         <div class="container flex-vertical flexv-align-center margin-top">
             <div class="pre-title on-dark">Alugue agora!</div>
-            <h2 class="size-h2 size-h2-xs text-align-center">Confira alguns modelos...</h2>
+            <h2 class="text-align-center">Confira alguns modelos...</h2>
         </div>
     </div>
     <div class="section is-dark pt-0">
@@ -96,7 +96,7 @@
             <div class="row row-fluid justify-content-center">
 
                 {{#each pool}}
-                <div class="col col-lg-4 col-sm-10 justify-content-center">
+                <div class="col col-lg-4 col-sm-10 justify-content-center mb-5">
                     {{> car_card}}
                 </div>
                 {{/each}}
