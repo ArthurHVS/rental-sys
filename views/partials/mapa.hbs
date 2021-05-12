@@ -7,7 +7,7 @@
         var vectorSource = new ol.source.Vector({});
         var vectorLayer = new ol.layer.Vector({ source: vectorSource });
         var view = new ol.View({
-            center: ol.proj.fromLonLat(coord),
+            center: ol.proj.fromLonLat([{{ carro.geo.geometry.coordinates }}]),
             zoom: 12,
             maxZoom: 19,
             minZoom: 5
@@ -16,7 +16,7 @@
         layers: [
             new ol.layer.Tile({ source: new ol.source.OSM({ key: 'myKey', crossOrigin: '' }) }), 
             vectorLayer, 
-            new ol.layer.Vector()],
+            new ol.layer.Vector({source: })],
         target: 'map',
         controls: ol.control.defaults(),
         view: view
